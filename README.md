@@ -1,2 +1,13 @@
 # Final Project
-Use this `REAMDE.md` file to describe your final project (as detailed on Canvas).
+Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth
+
+## Domain of interest
+
+
+## Other data driven projects
+
+
+## Data-driven questions
+
+
+## Finding Data
