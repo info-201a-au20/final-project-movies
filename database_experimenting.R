@@ -11,15 +11,24 @@ movies_metadata_df <- read.csv("data/movies_metadata.csv", stringsAsFactors = FA
 imdb_5000_movies_df <- mutate(imdb_5000_movies_df, "title" = str_sub(movie_title, 1, nchar(movie_title)-2))
 movies_lionsgate_df <- mutate(movies_lionsgate_df, "title" = name)
 
+imdb_movies_df <- imdb_movies_df %>%
+                  select(title, genre, usa_gross_income,
+                         budget, language, country, avg_vote,
+                         reviews_from_critics)
+
+imdb_5000_movies_df <- imdb_5000_movies_df %>%
+                       select(title, plot_keywords)
+
+
 # These two datasets have 2584 observations in common
-movie_big1_df <- left_join(imdb_5000_movies_df, imdb_movies_df, by = "title" )
+movie_big1_df <- inner_join(imdb_5000_movies_df, imdb_movies_df, by = "title" )
 
 # These two datasets have 7493 movies in common, which might be useful
-movie_big2_df <- left_join(movies_lionsgate_df, movies_metadata_df, by = "title" )
+# movie_big2_df <- left_join(movies_lionsgate_df, movies_metadata_df, by = "title" )
 
 # These three databases have 4996 movies in common, but many of them are repeats
-movie_big3_df <- inner_join(movie_big1_df, movie_big2_df, by = "title")
+# movie_big3_df <- inner_join(movie_big1_df, movie_big2_df, by = "title")
 
 
 # Looking at the number of unique movie titles, gives us around 3192 movies to work with
-n_unique_titles <- length(unique(movie_big3_df$title))
+n_unique_titles <- length(unique(movie_big1_df$title))
