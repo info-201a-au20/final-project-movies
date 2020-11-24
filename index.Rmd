@@ -10,9 +10,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r include=FALSE}
-source("analysis.R") # source in other script
+# source("analysis.R") # source in other script
 library("knitr") # load the `knitr` library
 library("ggplot2") # load the `ggplot2` library
+library("here") # load `here` package for easier access to files
+source(here::here("scripts", "summary_table.R"))
 ```
 
 ## Intro (Roshni)
@@ -24,7 +26,9 @@ library("ggplot2") # load the `ggplot2` library
 
 
 ## Summary table (Emiri)
-
+``` {r table, echo = FALSE}
+kable(summary_table, col.names = summary_column_names, align = "lcllll")
+```
 
 ## Scatterplot (Melina)
 

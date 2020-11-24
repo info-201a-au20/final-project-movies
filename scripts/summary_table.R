@@ -10,6 +10,7 @@ data <- read.csv("midpoint_df.csv", stringsAsFactors = FALSE)
 data <- data %>%
   mutate(genre = str_remove_all(genre, ",")) %>%
   # Mutate data so income and budget are numbers not characters
+  filter(budget != " ") %>%
   mutate(
     usa_gross_income = as.numeric(
       str_remove_all(usa_gross_income, "\\$ ")),
@@ -30,7 +31,7 @@ least_freq_genre <- function(column){
   return(value)
 }
 
-
+# Create final summary table
 summary_table <- data %>%
   group_by(year) %>%
   summarise(
@@ -41,4 +42,11 @@ summary_table <- data %>%
     least_genre = least_freq_genre(genre)
   )
 
-
+# Create column names:
+summary_column_names <- c("Year",
+                          "Number of Movies Published",
+                          "Average Budget",
+                          "Average USA Gross Income",
+                          "Most Common Genre",
+                          "Least Common Genre"
+                          )
