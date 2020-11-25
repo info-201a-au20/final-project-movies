@@ -19,13 +19,13 @@ data <- data %>%
 
 # Create a function to create frequency table for genres
 # Most common genre
-most_freq_genre <- function(column){
+most_freq_genre <- function(column) {
   table <- table(unlist(strsplit(column, " ")))
   value <- names(table)[which.max(table)]
   return(value)
 }
 # Least common genre
-least_freq_genre <- function(column){
+least_freq_genre <- function(column) {
   table <- table(unlist(strsplit(column, " ")))
   value <- names(table)[which.min(table)]
   return(value)
