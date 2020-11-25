@@ -13,8 +13,10 @@ knitr::opts_chunk$set(echo = TRUE)
 # source("analysis.R") # source in other script
 library("knitr") # load the `knitr` library
 library("ggplot2") # load the `ggplot2` library
+library("plotly") # load the `plotly` library
 library("here") # load `here` package for easier access to files
 source(here::here("scripts", "summary_table.R"))
+source("./scripts/Bargraph.R")
 ```
 
 ## Intro (Roshni)
@@ -34,7 +36,8 @@ kable(summary_table, col.names = summary_column_names, align = "lcllll")
 
 
 ## Bar chart (Roshni)
-
-
+```{r echo = FALSE, error = FALSE, eval = TRUE, warning=FALSE}
+ggplotly(get_bar_graph(midpoint_df))
+```
 ## Line chart (Gisele)
 
