@@ -4,7 +4,6 @@ library(stringr)
 
 # load csv
 data <- read.csv("./data/midpoint_df.csv", stringsAsFactors = FALSE)
-
 # Mutate data so genre column has no commas
 # (for finding most and least common genres later)
 data <- data %>%
