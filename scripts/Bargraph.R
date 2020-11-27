@@ -5,9 +5,6 @@ library(ggplot2)
 library(stringr)
 library(plotly)
 
-# Load data from file
-midpoint_df <- read.csv("./data/midpoint_df.csv", stringsAsFactors = FALSE)
-
 # Creating a bar graph of average movie industry revenue over the years
 # using the usa_gross_revenue field
 # My function that returns the graph

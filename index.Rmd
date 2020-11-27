@@ -16,11 +16,17 @@ library("ggplot2") # load the `ggplot2` library
 library("plotly") # load the `plotly` library
 library("here") # load `here` package for easier access to files
 source(here::here("scripts", "summary_table.R"))
-source("./scripts/Bargraph.R")
+source("./scripts/Bargraph.R") # source the scripts we are using
+
+# After reading through the canvas assignment, I think we are only supposed
+# to read our file one time in the index.Rmd file, and then we are supposed to
+# pass it into our individual functions
+
+df <- read.csv("./data/midpoint_df.csv", stringsAsFactors = FALSE)
 ```
 
-## Intro (Roshni)
-
+## Intro
+Movies have been an important aspect of society since their creation. They portray issues that reflect our culture and current events, while also providing entertainment. As a society, we have been witnessing the severe impact of the COVID-19 pandemic on the movie industry, from movie theater closures to film releases being delayed or pushed straight to streaming services. This project seeks to investigate the impact that global events - including the COVID-19 pandemic - have had on a variety of factors within the movie industry. The data from this project is mainly taken from the [IMDb Movies Extensive Database](https://www.kaggle.com/stefanoleone992/imdb-extensive-dataset?select=IMDb+movies.csv), and supplemented with the [IMDB 5000 Movie Dataset](https://www.kaggle.com/carolzhangdc/imdb-5000-movie-dataset). Both of these datasets were populated with data from IMDb. The datasets were combined using common movie titles, and then filtered to only include their **title, genre, gross income in the US, budget, language, country, average vote received, number of reviews from critics, and year published.**
 
 ## Summary paragraph (Ha)
 
@@ -36,8 +42,10 @@ kable(summary_table, col.names = summary_column_names, align = "lcllll")
 
 
 ## Bar chart (Roshni)
-```{r echo = FALSE, error = FALSE, eval = TRUE, warning=FALSE}
-ggplotly(get_bar_graph(midpoint_df))
+This bar chart depicts the average revenue (in the US) of the movie industry by year. Looking at the chart, we can see that there is a dip in average earnings from 1999 to 2011, but the **largest drop is from 2018 to 2020**. Even though there were more movies listed in the dataframe from 2020 as compared to 2018, there is still a massive drop in earnings, potentially from the coronavirus pandemic. 
+```{r eval=TRUE, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
+ggplotly(get_bar_graph(df))
+
 ```
 ## Line chart (Gisele)
 
