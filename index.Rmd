@@ -39,7 +39,9 @@ kable(summary_table, col.names = summary_column_names, align = "lcllll")
 ```
 
 ## Scatterplot (Melina)
-
+``` {r table, echo = FALSE}
+ggplotly(get_scatterplot(df))
+```
 
 ## Bar chart (Roshni)
 This bar chart depicts the average revenue (in the US) of the movie industry by year. Looking at the chart, we can see that there is a dip in average earnings from 1999 to 2011, but the **largest drop is from 2018 to 2020**. Even though there were more movies listed in the dataframe from 2020 as compared to 2018, there is still a massive drop in earnings, potentially from the coronavirus pandemic. 
