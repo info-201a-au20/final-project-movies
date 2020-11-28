@@ -14,8 +14,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library("knitr") # load the `knitr` library
 library("ggplot2") # load the `ggplot2` library
 library("plotly") # load the `plotly` library
-library("here") # load `here` package for easier access to files
-source(here::here("scripts", "summary_table.R"))
+library("dplyr")
+source("./scripts/summary_table_function.R")
 source("./scripts/Bargraph.R") # source the scripts we are using
 
 # After reading through the canvas assignment, I think we are only supposed
@@ -34,12 +34,12 @@ Movies have been an important aspect of society since their creation. They portr
 
 
 ## Summary table (Emiri)
-``` {r table, echo = FALSE}
-kable(summary_table, col.names = summary_column_names, align = "lcllll")
+``` {r table, eval=TRUE, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
+kable(summary_table(df), col.names = summary_column_names, align = "lcllll")
 ```
 
 ## Scatterplot (Melina)
-``` {r table, echo = FALSE}
+``` {r scatterplot, echo = FALSE}
 ggplotly(get_scatterplot(df))
 ```
 
