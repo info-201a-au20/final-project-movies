@@ -65,8 +65,10 @@ google_trends <- left_join(I_am_legend, contagion, by = "Month") %>%
   left_join(., carriers, by = "Month")
 
 
+
+google_trend_df <- read.csv("data/google_trends_df.csv", stringsAsFactors = FALSE)
 # Create a line graph
-ggplot(data = google_trends, aes(x = Month)) +
+ggplot(data = google_trend_df, aes(x = Month)) +
   geom_line(mapping = aes(y = I_am_legend, color = "I am Legend")) +
   geom_line(mapping = aes(y = Contagion, color = "Contagion")) +
   geom_line(mapping = aes(y = X28_days_later, color = "28 Days Later")) +
@@ -85,8 +87,8 @@ ggplot(data = google_trends, aes(x = Month)) +
   )
 
 
-  
-  
-  
+google_trend_df$Month <- as.yearmon(google_trend_df$Month, "%b %Y")
+
+class(google_trend_df$Month)  
   
   
