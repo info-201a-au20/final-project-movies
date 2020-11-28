@@ -14,16 +14,22 @@ knitr::opts_chunk$set(echo = TRUE)
 library("knitr") # load the `knitr` library
 library("ggplot2") # load the `ggplot2` library
 library("plotly") # load the `plotly` library
-library("here") # load `here` package for easier access to files
-source(here::here("scripts", "summary_table.R"))
+library("dplyr")
+library("zoo")
+source("./scripts/summary_table_function.R")
 source("./scripts/Bargraph.R") # source the scripts we are using
+source("scripts/linegraph_GT.R")
 
 # After reading through the canvas assignment, I think we are only supposed
 # to read our file one time in the index.Rmd file, and then we are supposed to
 # pass it into our individual functions
 
 df <- read.csv("./data/midpoint_df.csv", stringsAsFactors = FALSE)
+google_trend_df <- read.csv("data/google_trends_df.csv", stringsAsFactors = FALSE)
 ```
+# Final Project
+Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth, Ha Nhat To
+
 
 ## Intro
 Movies have been an important aspect of society since their creation. They portray issues that reflect our culture and current events, while also providing entertainment. As a society, we have been witnessing the severe impact of the COVID-19 pandemic on the movie industry, from movie theater closures to film releases being delayed or pushed straight to streaming services. This project seeks to investigate the impact that global events - including the COVID-19 pandemic - have had on a variety of factors within the movie industry. The data from this project is mainly taken from the [IMDb Movies Extensive Database](https://www.kaggle.com/stefanoleone992/imdb-extensive-dataset?select=IMDb+movies.csv), and supplemented with the [IMDB 5000 Movie Dataset](https://www.kaggle.com/carolzhangdc/imdb-5000-movie-dataset). Both of these datasets were populated with data from IMDb. The datasets were combined using common movie titles, and then filtered to only include their **title, genre, gross income in the US, budget, language, country, average vote received, number of reviews from critics, and year published.**
@@ -34,14 +40,16 @@ Movies have been an important aspect of society since their creation. They portr
 
 
 ## Summary table (Emiri)
-``` {r table, echo = FALSE}
-kable(summary_table, col.names = summary_column_names, align = "lcllll")
+**About Table:** A lot of our questions revolve around different statistics on movies across different years. Thus, our summary table looks at the number of movies published, average budget, USA gross income and most and least common genre from 1990 to 2020.
+<br/> **Insight:** By taking our large data set and summarizing it, we are able to see more specific, cleaned up information. For example, this process revealed that our data pool only had one movie for 1992, which did not report a budget. The table displays trends throughout years as well. From 1993 to 2015, Drama was the most common genre of released movies. There is more variety in the least common genre across the years, however, History seems to come up often. Other than 1992 and 2018, the average budget of movies is in the ten millions. Again, 1992 had only one movie reported with no budget. 2018 has a budget that is significantly less than surrounding years. We can also see that 2020 had a significant decrease in average USA income. Considering the COVID-19 pandemic, global events may have an impact on the movie industry. 
+``` {r table, eval=TRUE, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
+kable(summary_table(df), col.names = summary_column_names, align = "lcrrrr")
 ```
 
 ## Scatterplot (Melina)
-``` {r table, echo = FALSE}
-ggplotly(get_scatterplot(df))
-```
+# ``` {r scatterplot, echo = FALSE}
+# ggplotly(get_scatterplot(df))
+# ```
 
 ## Bar chart (Roshni)
 This bar chart depicts the average revenue (in the US) of the movie industry by year. Looking at the chart, we can see that there is a dip in average earnings from 1999 to 2011, but the **largest drop is from 2018 to 2020**. Even though there were more movies listed in the dataframe from 2020 as compared to 2018, there is still a massive drop in earnings, potentially from the coronavirus pandemic. 
@@ -49,5 +57,11 @@ This bar chart depicts the average revenue (in the US) of the movie industry by 
 ggplotly(get_bar_graph(df))
 
 ```
-## Line chart (Gisele)
 
+## Line chart (Gisele)
+This line graph depicts the search results of 5 pandemic related movies relative to the highest point on the chart for their given time frame. I chose this chart because it clearly shows the popularity of these movies over time (from one year after their release date to November 2020) and helps give a sense of how quarantine brought these movies back into the spotlight. From this graph we an clearly see a boost in attention towards movies that deal with a pandemic in March 2020, even if they are more fiction than what could happen in reality (see I am Legend and 28 days later that are notably zombie movies). Every movie's search results more than double in March of 2020 relative to November 2019 with Contagion coming in as the most different with a 9900% increase in that time frame. With respects to how this chart displays data it's clear to see that the month that these movies have been searched the most, after the year following it's release date, has been the month that the United States started implementing quarantine orders to get people to stay inside.
+```{r eval=TRUE, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
+google_trend_df$Month <- as.yearmon(google_trend_df$Month, "%b %Y")
+ggplotly(get_line_graph_GT(google_trend_df))
+
+```
