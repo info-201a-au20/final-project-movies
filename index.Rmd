@@ -14,19 +14,15 @@ knitr::opts_chunk$set(echo = TRUE)
 library("knitr") # load the `knitr` library
 library("ggplot2") # load the `ggplot2` library
 library("plotly") # load the `plotly` library
-library("zoo")
+
+# Sourcing our /scripts files
 source("./scripts/summary_info.R")
 source("./scripts/summary_table_function.R")
-source("./scripts/Bargraph.R") # source the scripts we are using
-source("./scripts/summary_table_function.R") # source the scripts we are using
 source("./scripts/Bargraph.R") 
 source("scripts/linegraph_GT.R")
 source("./scripts/Scatterplot.R")
 
-# After reading through the canvas assignment, I think we are only supposed
-# to read our file one time in the index.Rmd file, and then we are supposed to
-# pass it into our individual functions
-
+# Sourcing our dataframes
 df <- read.csv("./data/midpoint_df.csv", stringsAsFactors = FALSE)
 google_trend_df <- read.csv("data/google_trends_df.csv", stringsAsFactors = FALSE)
 ```
@@ -41,6 +37,8 @@ midpoint_summary <- get_summary_info(df)
 The **midpoint_df.csv** is a data set we compiled from the IMDB 5000 Movie Dataset and the IMDB Movies Extensive Database for the purpose of calculation and data visualization in this deliverable. It contains data of `r midpoint_summary$number_of_obs` movies produced in the US or in conjunction with the US from `r midpoint_summary$earliest_year` to `r midpoint_summary$latest_year`. In details, the data set considers `r midpoint_summary$number_of_columns` variables, namely `r midpoint_summary$column_names`.
 
 ### Limitations
+While we tried to be as accurate as possible, there are some limitations to the analysis we performed on our data. The first is that we disregarded inflation of currency, as it only increased 5.4% from 1990 to 2020, which is less than $2000 difference. Additionally, movie production takes a few years to occur, so themes prevalent in global events are not instantaneously reflected in movies that are released during that time period. 
+
 
 
 ## Summary table (Emiri)
@@ -60,7 +58,7 @@ ggplotly(get_scatterplot(df))
 
 ## Bar chart (Roshni)
 **About Chart:** One of the questions we wanted to answer for our data was how different national events impacted the movie industry. To answer this, this graph looks at the average revenue brought in by the movie industry by year.
-**Insight:** The main years we decided to look at were 1991 (Introduction of the Internet), 2001 (9/11), 2005 (Introduction of Youtube), 2008 (Great Recession), and 2020 (Coronavirus Pandemic). 
+<br/>**Insight:** The main years we decided to look at were 1991 (Introduction of the Internet), 2001 (9/11), 2005 (Introduction of Youtube), 2008-2009 (Great Recession), and 2020 (Coronavirus Pandemic). In 1991, we can see that average earnings dropped significantly from the year prior. For each of the events specified, we can see a significant drop in revenue earned by the movie industry. Potential explanations for these drops could be competition in forms of entertainment (The internet and youtube), a decrease in disposable income (recession), or the closue of movie theaters due to fear of spreading covid-19 (coronavirus pandemic)  
 ```{r eval=TRUE, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
 ggplotly(get_bar_graph(df))
 
