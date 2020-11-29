@@ -48,6 +48,9 @@ kable(summary_table(df), col.names = summary_column_names, align = "lcrrrr")
 ```
 
 ## Scatterplot (Melina)
+**About Scatterplot:** One of the questions we wanted to consider was the popularity of different movie genres over the years, and the below scatterplot answers that question through displaying the average vote (out of 10) for each movie genre from 1990 to 2020. Since most movies in our dataset had multiple genres, the avg_vote for each movie was applied to each of its genres. Please note that the scatterplot is interactive, so you can hover over each of the data points to see the year, average vote, and genre. 
+<br/> **Insight:** From the scatterplot, we can see that in 2020 (global event: COVID-19 pandemic), the highest rated genre thus far is Thriller and the lowest rated genre thus far is Mystery. In 2008 (global event: Great Recession), the highest rated genre was Biography and the lowest rated genre was Fantasy. In 2001 (global event: 9/11), the highest rated genre was Musical and the lowest rated genre was Sport. And in 1991 (global event: introduction of the Internet/World Wide Web), the highest rated genre was Biography and the lowest rated genre was Crime.
+
 ``` {r scatterplot, eval=TRUE, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
 ggplotly(get_scatterplot(df))
 ```
