@@ -49,3 +49,8 @@ summary_column_names <- c("Year",
                           "Most Common Genre",
                           "Least Common Genre"
                           )
+
+library(tidyr)
+data <- data %>%
+  select(genre, avg_vote, year) %>%
+  separate_rows(genre, sep=", ")
