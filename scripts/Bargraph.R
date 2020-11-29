@@ -17,7 +17,8 @@ get_bar_graph <- function(dataframe) {
     group_by(year) %>%
     summarise("average_revenue" = mean(revenue, na.rm = TRUE))
   bar_graph <- ggplot(data = dataframe) +
-    geom_col(data = dataframe, aes(x = year, y = average_revenue), fill = "deepskyblue") +
+    geom_col(data = dataframe, aes(x = year,
+            y = average_revenue), fill = "deepskyblue") +
     xlab("Year") +
     ylab("Average Revenue (USD)") +
     ggtitle("Average Revenue of Movie Industry by Year (1990 - 2020)")
