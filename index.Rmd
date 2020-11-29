@@ -1,7 +1,7 @@
 ---
-title: "index"
-author: "Melina"
-date: "11/22/2020"
+title: "Midpoint Deliverable"
+author: "Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth, Ha Nhat To"
+date: "Due 11/30/2020"
 output: html_document
 ---
 
@@ -14,10 +14,9 @@ knitr::opts_chunk$set(echo = TRUE)
 library("knitr") # load the `knitr` library
 library("ggplot2") # load the `ggplot2` library
 library("plotly") # load the `plotly` library
-library("dplyr")
-library("zoo")
-source("./scripts/summary_table_function.R")
-source("./scripts/Bargraph.R") # source the scripts we are using
+
+source("./scripts/summary_table_function.R") # source the scripts we are using
+source("./scripts/Bargraph.R") 
 source("scripts/linegraph_GT.R")
 source("./scripts/Scatterplot.R")
 
@@ -28,9 +27,6 @@ source("./scripts/Scatterplot.R")
 df <- read.csv("./data/midpoint_df.csv", stringsAsFactors = FALSE)
 google_trend_df <- read.csv("data/google_trends_df.csv", stringsAsFactors = FALSE)
 ```
-# Final Project
-Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth, Ha Nhat To
-
 
 ## Intro
 Movies have been an important aspect of society since their creation. They portray issues that reflect our culture and current events, while also providing entertainment. As a society, we have been witnessing the severe impact of the COVID-19 pandemic on the movie industry, from movie theater closures to film releases being delayed or pushed straight to streaming services. This project seeks to investigate the impact that global events - including the COVID-19 pandemic - have had on a variety of factors within the movie industry. The data from this project is mainly taken from the [IMDb Movies Extensive Database](https://www.kaggle.com/stefanoleone992/imdb-extensive-dataset?select=IMDb+movies.csv), and supplemented with the [IMDB 5000 Movie Dataset](https://www.kaggle.com/carolzhangdc/imdb-5000-movie-dataset). Both of these datasets were populated with data from IMDb. The datasets were combined using common movie titles, and then filtered to only include their **title, genre, gross income in the US, budget, language, country, average vote received, number of reviews from critics, and year published.**
