@@ -1,7 +1,7 @@
 ---
-title: "index"
-author: ""
-date: "11/22/2020"
+title: "Midpoint Deliverable"
+author: "Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth, Ha Nhat To"
+date: "Due 11/30/2020"
 output: html_document
 ---
 
@@ -18,6 +18,8 @@ library("zoo")
 source("./scripts/summary_info.R")
 source("./scripts/summary_table_function.R")
 source("./scripts/Bargraph.R") # source the scripts we are using
+source("./scripts/summary_table_function.R") # source the scripts we are using
+source("./scripts/Bargraph.R") 
 source("scripts/linegraph_GT.R")
 source("./scripts/Scatterplot.R")
 
@@ -28,9 +30,6 @@ source("./scripts/Scatterplot.R")
 df <- read.csv("./data/midpoint_df.csv", stringsAsFactors = FALSE)
 google_trend_df <- read.csv("data/google_trends_df.csv", stringsAsFactors = FALSE)
 ```
-# Final Project
-Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth, Ha Nhat To
-
 
 ## Intro
 Movies have been an important aspect of society since their creation. They portray issues that reflect our culture and current events, while also providing entertainment. As a society, we have been witnessing the severe impact of the COVID-19 pandemic on the movie industry, from movie theater closures to film releases being delayed or pushed straight to streaming services. This project seeks to investigate the impact that global events - including the COVID-19 pandemic - have had on a variety of factors within the movie industry. The data from this project is mainly taken from the [IMDb Movies Extensive Database](https://www.kaggle.com/stefanoleone992/imdb-extensive-dataset?select=IMDb+movies.csv), and supplemented with the [IMDB 5000 Movie Dataset](https://www.kaggle.com/carolzhangdc/imdb-5000-movie-dataset). Both of these datasets were populated with data from IMDb. The datasets were combined using common movie titles, and then filtered to only include their **title, genre, gross income in the US, budget, language, country, average vote received, number of reviews from critics, and year published.**
@@ -39,7 +38,7 @@ Movies have been an important aspect of society since their creation. They portr
 ``` {r load dataset, echo = FALSE}
 midpoint_summary <- get_summary_info(df)
 ```
-The **midpoint_df.csv** is a data set we compiled from the IMDB 5000 Movie Dataset and the IMDB Movies Extensive Database for the purpose of calculation and data visualization in this deliverable. It contains data of `r midpoint_summary$number_of_obs` movies produced in the US or in conjunction with the US from `r midpoint_summary$earliest_year` to `r midpoint_summary$latest_year`. The data set considers `r midpoint_summary$number_of_columns` variables, namely `r midpoint_summary$column_names`.
+The **midpoint_df.csv** is a data set we compiled from the IMDB 5000 Movie Dataset and the IMDB Movies Extensive Database for the purpose of calculation and data visualization in this deliverable. It contains data of `r midpoint_summary$number_of_obs` movies produced in the US or in conjunction with the US from `r midpoint_summary$earliest_year` to `r midpoint_summary$latest_year`. In details, the data set considers `r midpoint_summary$number_of_columns` variables, namely `r midpoint_summary$column_names`.
 
 ### Limitations
 
@@ -52,6 +51,9 @@ kable(summary_table(df), col.names = summary_column_names, align = "lcrrrr")
 ```
 
 ## Scatterplot (Melina)
+**About Scatterplot:** One of the questions we wanted to consider was the popularity of different movie genres over the years, and the below scatterplot answers that question through displaying the average vote (out of 10) for each movie genre from 1990 to 2020. Since most movies in our dataset had multiple genres, the avg_vote for each movie was applied to each of its genres. Please note that the scatterplot is interactive, so you can hover over each of the data points to see the year, average vote, and genre. 
+<br/> **Insight:** From the scatterplot, we can see that in 2020 (global event: COVID-19 pandemic), the highest rated genre thus far is Thriller and the lowest rated genre thus far is Mystery. In 2008 (global event: Great Recession), the highest rated genre was Biography and the lowest rated genre was Fantasy. In 2001 (global event: 9/11), the highest rated genre was Musical and the lowest rated genre was Sport. And in 1991 (global event: introduction of the Internet/World Wide Web), the highest rated genre was Biography and the lowest rated genre was Crime.
+
 ``` {r scatterplot, eval=TRUE, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
 ggplotly(get_scatterplot(df))
 ```
