@@ -1,5 +1,7 @@
 library(dplyr)
 library(stringr)
+library(tidyr)
+library(ggplot2)
 
 #Roshni's experimental data analysis
 imdb_5000_movies_df <- read.csv("data/imdb_5000_movie_dataset.csv",
@@ -39,3 +41,22 @@ movie_big1_df <- movie_big1_df %>%
                  mutate("title_and_year" = paste0(title, " (", year, ")")) %>%
                  select(-title)
 write.csv(movie_big1_df, "data/midpoint_df.csv")
+
+
+data <- movie_big1_df %>%
+  select(genre, avg_vote, year) %>%
+  separate_rows(genre, sep = ", ")%>%
+  group_by(genre, year) %>%
+  mutate("average" = sum(avg_vote, na.rm = TRUE)/n()) %>%
+  group_by(year)
+
+scatterplot <- ggplot(data = data) + # currently getting error that 'summary_df' is not found
+  geom_point(mapping = aes(x = year, y = average, color = genre)) +
+  ggtitle("Average Vote of Movie Genres by Year") + 
+  xlab("Year") +
+  ylab("Average vote (out of 10)")  
+
+ggplotly(scatterplot)
+                        
+
+

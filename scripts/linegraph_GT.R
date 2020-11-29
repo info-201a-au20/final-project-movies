@@ -13,7 +13,7 @@ get_line_graph_GT <- function(df) {
   df$Month <- as.yearmon(df$Month, "%b %Y")
   
   # Create the line graph
-  line_graph <- ggplot(data = google_trend_df, aes(x = Month)) +
+  line_graph <- ggplot(data = df, aes(x = Month)) +
     geom_line(mapping = aes(y = I_am_legend, color = "I am Legend")) +
     geom_line(mapping = aes(y = Contagion, color = "Contagion")) +
     geom_line(mapping = aes(y = X28_days_later, color = "28 Days Later")) +
@@ -30,6 +30,8 @@ get_line_graph_GT <- function(df) {
       x = "Month",
       y = "Search interest relative to the highest point on the chart"
     )
-  
+
   return(line_graph)
 }
+
+
