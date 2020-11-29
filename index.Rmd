@@ -19,6 +19,7 @@ library("zoo")
 source("./scripts/summary_table_function.R")
 source("./scripts/Bargraph.R") # source the scripts we are using
 source("scripts/linegraph_GT.R")
+source("./scripts/Scatterplot.R")
 
 # After reading through the canvas assignment, I think we are only supposed
 # to read our file one time in the index.Rmd file, and then we are supposed to
@@ -47,9 +48,9 @@ kable(summary_table(df), col.names = summary_column_names, align = "lcrrrr")
 ```
 
 ## Scatterplot (Melina)
-# ``` {r scatterplot, echo = FALSE}
-# ggplotly(get_scatterplot(df))
-# ```
+``` {r scatterplot, eval=TRUE, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
+ggplotly(get_scatterplot(df))
+```
 
 ## Bar chart (Roshni)
 This bar chart depicts the average revenue (in the US) of the movie industry by year. Looking at the chart, we can see that there is a dip in average earnings from 1999 to 2011, but the **largest drop is from 2018 to 2020**. Even though there were more movies listed in the dataframe from 2020 as compared to 2018, there is still a massive drop in earnings, potentially from the coronavirus pandemic. 
