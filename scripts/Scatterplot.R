@@ -1,8 +1,6 @@
 # Load packages
 library(dplyr)
 library(ggplot2)
-library(plotly)
-library(stringr)
 library(tidyr)
 library(lintr)
 library(stringr)
@@ -21,7 +19,7 @@ get_scatterplot <- function(dataframe) {
 
   scatterplot <- ggplot(data = data) +
     geom_point(mapping = aes(x = year, y = genre_avg_vote, color = genre)) +
-    ggtitle("Average Vote of Movie Genres by Year") +
+    ggtitle("Average Vote of Movie Genres by Year (1990 - 2020)") +
     xlab("Year") +
     ylab("Average vote (out of 10)")
 
