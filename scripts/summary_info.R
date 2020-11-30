@@ -35,7 +35,3 @@ get_summary_info <- function(dataset) {
   ret$latest_year <- latest_year_vect[1]
   return(ret)
 }
-
-# Test
-midpoint <- read.csv("midpoint_df.csv", stringsAsFactors = F)
-get_summary_info(midpoint)
