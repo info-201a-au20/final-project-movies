@@ -14,25 +14,21 @@ knitr::opts_chunk$set(echo = TRUE)
 library("knitr") # load the `knitr` library
 library("ggplot2") # load the `ggplot2` library
 library("plotly") # load the `plotly` library
-library("zoo")
+
+# Sourcing our /scripts files
 source("./scripts/summary_info.R")
 source("./scripts/summary_table_function.R")
-source("./scripts/Bargraph.R") # source the scripts we are using
-source("./scripts/summary_table_function.R") # source the scripts we are using
 source("./scripts/Bargraph.R") 
-source("scripts/linegraph_GT.R")
+source("./scripts/linegraph_GT.R")
 source("./scripts/Scatterplot.R")
 
-# After reading through the canvas assignment, I think we are only supposed
-# to read our file one time in the index.Rmd file, and then we are supposed to
-# pass it into our individual functions
-
+# Sourcing our dataframes
 df <- read.csv("./data/midpoint_df.csv", stringsAsFactors = FALSE)
 google_trend_df <- read.csv("data/google_trends_df.csv", stringsAsFactors = FALSE)
 ```
 
 ## Intro
-Movies have been an important aspect of society since their creation. They portray issues that reflect our culture and current events, while also providing entertainment. As a society, we have been witnessing the severe impact of the COVID-19 pandemic on the movie industry, from movie theater closures to film releases being delayed or pushed straight to streaming services. This project seeks to investigate the impact that global events - including the COVID-19 pandemic - have had on a variety of factors within the movie industry. The data from this project is mainly taken from the [IMDb Movies Extensive Database](https://www.kaggle.com/stefanoleone992/imdb-extensive-dataset?select=IMDb+movies.csv), and supplemented with the [IMDB 5000 Movie Dataset](https://www.kaggle.com/carolzhangdc/imdb-5000-movie-dataset). Both of these datasets were populated with data from IMDb. The datasets were combined using common movie titles, and then filtered to only include their **title, genre, gross income in the US, budget, language, country, average vote received, number of reviews from critics, and year published.**
+Movies have been an important aspect of society since their creation. They portray issues that reflect our culture and current events, while also providing entertainment. As a society, we have been witnessing the severe impact of the COVID-19 pandemic on the movie industry, from movie theater closures to film releases being delayed or pushed straight to streaming services. This project seeks to investigate the impact that global events - including the COVID-19 pandemic - have had on a variety of factors within the movie industry. The data from this project is mainly taken from the [IMDb Movies Extensive Database](https://www.kaggle.com/stefanoleone992/imdb-extensive-dataset?select=IMDb+movies.csv), and supplemented with the [IMDB 5000 Movie Dataset](https://www.kaggle.com/carolzhangdc/imdb-5000-movie-dataset). Both of these datasets were populated with data from IMDb. We also used data scraped from [google trends](https://trends.google.com/trends) about interest in 5 pandemic-related movies, which is shown in the line chart below.  
 
 ## Summary paragraph (Ha)
 ``` {r load dataset, echo = FALSE}
@@ -41,33 +37,37 @@ midpoint <- get_summary_info(df)
 The **midpoint_df.csv** is a data set we compiled from the IMDB 5000 Movie Dataset and the IMDB Movies Extensive Database for the purpose of calculation and data visualization in this deliverable. It contains data of `r midpoint$number_of_obs` movies produced in the US or in conjunction with the US from `r midpoint$earliest_year` to `r midpoint$latest_year`. In details, the data set considers `r midpoint$number_of_columns` variables, namely `r midpoint$column_names`.
 
 ### Limitations
+While we tried to be as accurate as possible, there are some limitations to the analysis we performed on our data. The first is that we disregarded inflation of currency, as it only increased 5.4% from 1990 to 2020, which is less than $2000 difference. Additionally, movie production takes a few years to occur, so themes prevalent in global events are not instantaneously reflected in movies that are released during that time period. Furthermore, while we made sure each of our observations had a reported USA gross income, some did not report a budget.
+For the **scatterplot visualization** specifically, the datapoints are somewhat crowded and some of the colors used to identify the movie genre are quite similar and difficult to distinguish. However, color palettes did not contain enough different colors for all of the movie genres, and because the scatterplot is interactive, hovering over datapoints will allow for clearer views of the data they represent.
+For the **bar chart**, one of the limitations is that we calculated the average revenue by year, rather than the median. This could potentially allow values to be skewed by outliers of movies that earned extremely high or extremely low amounts of revenue. 
 
 
 ## Summary table (Emiri)
 **About Table:** A lot of our questions revolve around different statistics on movies across different years. Thus, our summary table looks at the number of movies published, average budget, USA gross income and most and least common genre from 1990 to 2020.
-<br/> **Insight:** By taking our large data set and summarizing it, we are able to see more specific, cleaned up information. For example, this process revealed that our data pool only had one movie for 1992, which did not report a budget. The table displays trends throughout years as well. From 1993 to 2015, Drama was the most common genre of released movies. There is more variety in the least common genre across the years, however, History seems to come up often. Other than 1992 and 2018, the average budget of movies is in the ten millions. Again, 1992 had only one movie reported with no budget. 2018 has a budget that is significantly less than surrounding years. We can also see that 2020 had a significant decrease in average USA income. Considering the COVID-19 pandemic, global events may have an impact on the movie industry. 
+<br/> **Insight:** By taking our large data set and summarizing it, we are able to see more specific, cleaned up information. For example, this process revealed that our data pool only had one movie for 1992, which did not report a budget. The table displays trends throughout years as well. From 1993 to 2015, Drama was the most common genre of released movies. There is more variety in the least common genre across the years, however, History seems to come up often. Other than 1992 and 2018, the average budget of movies is in the ten millions. Again, 1992 had only one movie reported with no budget. 2018 has a budget that is significantly less than surrounding years. We can also see that 2020 had a significant decrease in average USA income. Considering the COVID-19 pandemic, global events may have an impact on the movie industry. Another interesting insight about 2020 are the most common and least common genres, Horror and Adventure respectively. Looking at other key events, in 2008, the number of movies, average budget and average USA income do not significantly change. Drama is the most common genre and History is the least common genre. In 2005 when Youtube was introduced, the number of movies increases, hitting 90 for the first time. The most common genre and least common genre do not stand out, being Drama and War respectively. Similar to 2008, 2001, when 9/11 happened, 1997, when Netflix was created, and 1991, the introduction of the World Wide Web, there is no summary value that stands out significantly. 
 ``` {r table, eval=TRUE, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
 kable(summary_table(df), col.names = summary_column_names, align = "lcrrrr")
 ```
 
 ## Scatterplot (Melina)
-**About Scatterplot:** One of the questions we wanted to consider was the popularity of different movie genres over the years, and the below scatterplot answers that question through displaying the average vote (out of 10) for each movie genre from 1990 to 2020. Since most movies in our dataset had multiple genres, the avg_vote for each movie was applied to each of its genres. Please note that the scatterplot is interactive, so you can hover over each of the data points to see the year, average vote, and genre. 
-<br/> **Insight:** From the scatterplot, we can see that in 2020 (global event: COVID-19 pandemic), the highest rated genre thus far is Thriller and the lowest rated genre thus far is Mystery. In 2008 (global event: Great Recession), the highest rated genre was Biography and the lowest rated genre was Fantasy. In 2001 (global event: 9/11), the highest rated genre was Musical and the lowest rated genre was Sport. And in 1991 (global event: introduction of the Internet/World Wide Web), the highest rated genre was Biography and the lowest rated genre was Crime.
-
+**About Scatterplot:** One of the questions we wanted to consider was the popularity of different movie genres over the years, and the below scatterplot answers that question by showing the relationship between the average IMDB Metascore vote (out of 10) and each movie genre in every year from 1990 to 2020. Since most movies in our dataset had multiple genres, the avg_vote for each movie was applied to each of the movies' genres. Please note that the scatterplot is interactive, so you can hover over each of the data points to see the year, average vote, and genre. 
+<br/> **Insight:** From the scatterplot, we can see that in 2020 (event: COVID-19 pandemic), the highest rated genre thus far is Thriller and the lowest rated genre thus far is Mystery. In 2008 (event: Great Recession), the highest rated genre was Biography and the lowest rated genre was Fantasy. In 2005 (event: introduction of YouTube), the highest rated genre was History and the lowest rated genre was Musical. In 2001 (event: 9/11 bombing), the highest rated genre was Musical and the lowest rated genre was Sport. In 1997 (event: introduction of Netflix), the highest rated genre was Mystery and the lowest rated genre was Fantasy. And in 1991 (event: introduction of the Internet/World Wide Web), the highest rated genre was Biography and the lowest rated genre was Crime.
 ``` {r scatterplot, eval=TRUE, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
 ggplotly(get_scatterplot(df))
 ```
 
 ## Bar chart (Roshni)
-This bar chart depicts the average revenue (in the US) of the movie industry by year. Looking at the chart, we can see that there is a dip in average earnings from 1999 to 2011, but the **largest drop is from 2018 to 2020**. Even though there were more movies listed in the dataframe from 2020 as compared to 2018, there is still a massive drop in earnings, potentially from the coronavirus pandemic. 
+**About Chart:** One of the questions we wanted to answer for our data was how different national events impacted the movie industry. To answer this, this graph looks at the average revenue brought in by the movie industry by year.
+<br/>**Insight:** The main years we decided to look at were 1991 (Introduction of the Internet), 1997 (Introduction of Netflix), 2001 (9/11), 2005 (Introduction of Youtube), 2008-2009 (Great Recession), and 2020 (Coronavirus Pandemic). All of the years we looked at, (with the exception of 2001) showed a decrease in earnings from the year prior. Potential explanations for these drops could be competition in forms of entertainment (The internet, netflix and youtube), a decrease in disposable income (recession), or the closue of movie theaters due to fear of spreading covid-19 (coronavirus pandemic)  
 ```{r eval=TRUE, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
 ggplotly(get_bar_graph(df))
 
 ```
 
 ## Line chart (Gisele)
-This line graph depicts the search results of 5 pandemic related movies relative to the highest point on the chart for their given time frame. I chose this chart because it clearly shows the popularity of these movies over time (from one year after their release date to November 2020) and helps give a sense of how quarantine brought these movies back into the spotlight. From this graph we an clearly see a boost in attention towards movies that deal with a pandemic in March 2020, even if they are more fiction than what could happen in reality (see I am Legend and 28 days later that are notably zombie movies). Every movie's search results more than double in March of 2020 relative to November 2019 with Contagion coming in as the most different with a 9900% increase in that time frame. With respects to how this chart displays data it's clear to see that the month that these movies have been searched the most, after the year following it's release date, has been the month that the United States started implementing quarantine orders to get people to stay inside.
+**About Chart:** This line graph depicts the search results of 5 pandemic related movies relative to the highest point on the chart for their given time frame. I chose this chart because it clearly shows the popularity of these movies over time (from one year after their release date to November 2020) and helps give a sense of how quarantine brought these movies back into the spotlight. 
+<br/>**Insight:** From this graph we can clearly see a boost in attention towards movies that deal with a pandemic in March 2020, even if they are more fiction than what could happen in reality (see I am Legend and 28 days later that are notably zombie movies). Every movie's search results more than double in March of 2020 relative to November 2019 with Contagion coming in as the most different with a 9900% increase in that time frame. With respects to how this chart displays data it's clear to see that the month that these movies have been searched the most, after the year following it's release date, has been the month that the United States started implementing quarantine orders to get people to stay inside. We can assume from this that the real life events of a global pandemic made people more interested in movies involving the same topic.
 ```{r eval=TRUE, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
-ggplotly(get_line_graph_GT(google_trend_df))
+ggplotly(get_line_graph_gt(google_trend_df))
 
 ```
