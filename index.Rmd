@@ -57,7 +57,7 @@ ggplotly(get_scatterplot(df))
 
 ## Bar chart (Roshni)
 **About Chart:** One of the questions we wanted to answer for our data was how different national events impacted the movie industry. To answer this, this graph looks at the average revenue brought in by the movie industry by year.
-<br/>**Insight:** The main years we decided to look at were 1991 (Introduction of the Internet), 2001 (9/11), 2005 (Introduction of Youtube), 2008-2009 (Great Recession), and 2020 (Coronavirus Pandemic). In 1991, we can see that average earnings dropped significantly from the year prior. For each of the events specified, we can see a significant drop in revenue earned by the movie industry. Potential explanations for these drops could be competition in forms of entertainment (The internet and youtube), a decrease in disposable income (recession), or the closue of movie theaters due to fear of spreading covid-19 (coronavirus pandemic)  
+<br/>**Insight:** The main years we decided to look at were 1991 (Introduction of the Internet), 1997 (Introduction of Netflix), 2001 (9/11), 2005 (Introduction of Youtube), 2008-2009 (Great Recession), and 2020 (Coronavirus Pandemic). All of the years we looked at, (with the exception of 2001) showed a decrease in earnings from the year prior. Potential explanations for these drops could be competition in forms of entertainment (The internet, netflix and youtube), a decrease in disposable income (recession), or the closue of movie theaters due to fear of spreading covid-19 (coronavirus pandemic)  
 ```{r eval=TRUE, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
 ggplotly(get_bar_graph(df))
 
