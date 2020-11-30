@@ -38,7 +38,8 @@ The **midpoint_df.csv** is a data set we compiled from the IMDB 5000 Movie Datas
 
 ### Limitations
 While we tried to be as accurate as possible, there are some limitations to the analysis we performed on our data. The first is that we disregarded inflation of currency, as it only increased 5.4% from 1990 to 2020, which is less than $2000 difference. Additionally, movie production takes a few years to occur, so themes prevalent in global events are not instantaneously reflected in movies that are released during that time period. Furthermore, while we made sure each of our observations had a reported USA gross income, some did not report a budget.
-For the **scatterplot visualization** specifically, the datapoints are somewhat crowded and some of the colors used to identify the movie genre are quite similar and difficult to distinguish. However, color palettes did not contain enough different colors for all of the movie genres, and because the scatterplot is interactive, hovering over datapoints will allow for clearer views of the data they represent. 
+For the **scatterplot visualization** specifically, the datapoints are somewhat crowded and some of the colors used to identify the movie genre are quite similar and difficult to distinguish. However, color palettes did not contain enough different colors for all of the movie genres, and because the scatterplot is interactive, hovering over datapoints will allow for clearer views of the data they represent.
+For the **bar chart**, one of the limitations is that we calculated the average revenue by year, rather than the median. This could potentially allow values to be skewed by outliers of movies that earned extremely high or extremely low amounts of revenue. 
 
 
 ## Summary table (Emiri)
