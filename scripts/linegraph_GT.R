@@ -28,7 +28,7 @@ get_line_graph_GT <- function(df) {
         "Carriers" = "purple"
       )
     ) +
-    labs(title = "Search interest of Pandemic Related Movies Relative to the Highest Point on the Chart for their Given Time Frame",
+    labs(title = "Search interest of Pandemic Related Movies",
          x = "Month",
          y = "Search interest relative to the highest point on the chart")
   
