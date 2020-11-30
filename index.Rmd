@@ -19,7 +19,7 @@ library("plotly") # load the `plotly` library
 source("./scripts/summary_info.R")
 source("./scripts/summary_table_function.R")
 source("./scripts/Bargraph.R") 
-source("scripts/linegraph_GT.R")
+source("./scripts/linegraph_GT.R")
 source("./scripts/Scatterplot.R")
 
 # Sourcing our dataframes
@@ -37,7 +37,7 @@ midpoint_summary <- get_summary_info(df)
 The **midpoint_df.csv** is a data set we compiled from the IMDB 5000 Movie Dataset and the IMDB Movies Extensive Database for the purpose of calculation and data visualization in this deliverable. It contains data of `r midpoint_summary$number_of_obs` movies produced in the US or in conjunction with the US from `r midpoint_summary$earliest_year` to `r midpoint_summary$latest_year`. In details, the data set considers `r midpoint_summary$number_of_columns` variables, namely `r midpoint_summary$column_names`.
 
 ### Limitations
-While we tried to be as accurate as possible, there are some limitations to the analysis we performed on our data. The first is that we disregarded inflation of currency, as it only increased 5.4% from 1990 to 2020, which is less than $2000 difference. Additionally, movie production takes a few years to occur, so themes prevalent in global events are not instantaneously reflected in movies that are released during that time period. 
+While we tried to be as accurate as possible, there are some limitations to the analysis we performed on our data. The first is that we disregarded inflation of currency, as it only increased 5.4% from 1990 to 2020, which is less than $2000 difference. Additionally, movie production takes a few years to occur, so themes prevalent in global events are not instantaneously reflected in movies that are released during that time period. Furthermore, while we made sure each of our observations had a reported USA gross income, some did not report a budget.
 For the **scatterplot visualization** specifically, the datapoints are somewhat crowded and some of the colors used to identify the movie genre are quite similar and difficult to distinguish. However, color palettes did not contain enough different colors for all of the movie genres, and because the scatterplot is interactive, hovering over datapoints will allow for clearer views of the data they represent. 
 
 
