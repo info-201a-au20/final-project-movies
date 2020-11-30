@@ -15,13 +15,10 @@ get_bar_graph <- function(dataframe) {
       str_sub(usa_gross_income, 2, nchar(usa_gross_income))
     )) %>%
     group_by(year) %>%
-    summarise(
-      "average_revenue" = mean(revenue, na.rm = TRUE),
-      "median_revenue" = median(revenue, na.rm = TRUE),
-      "total_revenue" = sum(revenue, na.rm = TRUE)
-    )
+    summarise("average_revenue" = mean(revenue, na.rm = TRUE))
   bar_graph <- ggplot(data = dataframe) +
-    geom_col(data = dataframe, aes(x = year, y = average_revenue)) +
+    geom_col(data = dataframe, aes(x = year,
+            y = average_revenue), fill = "deepskyblue") +
     xlab("Year") +
     ylab("Average Revenue (USD)") +
     ggtitle("Average Revenue of Movie Industry by Year (1990 - 2020)")
