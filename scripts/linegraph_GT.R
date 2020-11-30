@@ -9,9 +9,9 @@ library("zoo")
 # Create the function to make a line graph of the google trends data
 get_line_graph_gt <- function(df) {
   # Make sure the data has the months as class yearmon
-  df$Month <- as.yearmon(df$Month, "%b %Y")
+  df$month <- as.yearmon(df$month, "%b %Y")
   # Create the line graph
-  line_graph <- ggplot(data = df, aes(x = Month)) +
+  line_graph <- ggplot(data = df, aes(x = month)) +
     geom_line(mapping = aes(y = I_am_legend, color = "I am Legend")) +
     geom_line(mapping = aes(y = Contagion, color = "Contagion")) +
     geom_line(mapping = aes(y = X28_days_later, color = "28 Days Later")) +
@@ -28,9 +28,7 @@ get_line_graph_gt <- function(df) {
       )
     ) +
     labs(title = "Search interest of Pandemic Related Movies",
-         x = "Month",
+         x = "month",
          y = "Search interest relative to the highest point on the chart")
   return(line_graph)
 }
-
-
