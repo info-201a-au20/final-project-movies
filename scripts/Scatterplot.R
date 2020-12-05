@@ -29,6 +29,25 @@ get_scatterplot <- function(dataframe) {
 
 # Function that accepts a dataframe and genre and builds a scatterplot of the 
 # genre's corresponding average votes over the years based on dataframe's data
-build_scatterplot <- function(dataframe, genre) {
+build_scatterplot <- function(dataframe, genre_input) {
+  # Manipulate the dataframe
+  data <- dataframe %>%
+    select(genre, avg_vote, year) %>%
+    separate_rows(genre, sep = ", ") %>%
+    group_by(genre, year) %>%
+    filter(genre == genre_input) %>% # filter dataframe based on inputted genre
+    mutate("genre_avg_vote" = sum(avg_vote, na.rm = TRUE) / n()) %>%
+    group_by(year)
   
+  scatterplot <- ggplot(data = data) +
+    geom_point(mapping = aes(x = year, y = genre_avg_vote)) +
+    ggtitle(paste0("Average Vote of ", genre_input, " Genre by Year (1990 - 2020)")) +
+    xlab("Year") +
+    ylab("Average vote (out of 10)")
+  
+  return(scatterplot)
 }
+
+# Testing build_scatterplot function
+df <- read.csv("./data/midpoint_df.csv", stringsAsFactors = FALSE)
+build_scatterplot(df, "Action")

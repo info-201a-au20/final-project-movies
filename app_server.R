@@ -22,7 +22,7 @@ server <- function(input, output) {
   
   # Render a plotly object returning the scatter plot (interactive chart 1)
   output$scatter <- renderPlotly({
-    scatter <- build_scatter(joined_data, input$search_var)
+    scatter <- build_scatterplot(df, input$genre)
     return(scatter)
   })
   
