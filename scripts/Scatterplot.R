@@ -5,8 +5,9 @@ library(tidyr)
 library(lintr)
 library(stringr)
 
-# Creating a scatterplot of different movie genres and corresponding average
-# votes over the years
+# Function that accepts a dataframe and returns a scatterplot of different movie
+# genres and corresponding average votes over the years based on data from that
+# dataframe
 get_scatterplot <- function(dataframe) {
   # Manipulate the dataframe to have the distinct movie genres and average vote
   # per genre for each year
@@ -24,4 +25,10 @@ get_scatterplot <- function(dataframe) {
     ylab("Average vote (out of 10)")
 
   return(scatterplot)
+}
+
+# Function that accepts a dataframe and genre and builds a scatterplot of the 
+# genre's corresponding average votes over the years based on dataframe's data
+build_scatterplot <- function(dataframe, genre) {
+  
 }
