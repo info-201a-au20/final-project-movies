@@ -1,4 +1,7 @@
 # UI
+library(shiny)
+library(ggplot2)
+library(plotly)
 # First Page (introduction)
 
 
@@ -12,3 +15,9 @@
 
 
 # Fifth Page (summary)
+
+# UI 
+ui <- fluidPage(
+  title = "Testing bar graph",
+  plotlyOutput("bar")
+)

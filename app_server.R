@@ -12,6 +12,7 @@ source("./scripts/Bargraph.R")
 source("./scripts/linegraph_GT.R")
 source("./scripts/Scatterplot.R")
 
+
 # Sourcing our dataframes
 df <- read.csv("./data/midpoint_df.csv", stringsAsFactors = FALSE)
 google_trend_df <- read.csv("data/google_trends_df.csv", 
@@ -28,7 +29,10 @@ server <- function(input, output) {
   
   
   # Render a plotly object returning the bar chart (interactive chart 2)
-  
+  output$bar <- renderPlotly({
+    bar <- build_bar_graph(df, input$measurement)
+    return(bar)
+  })
   
   
   # Render a plotly object returning the line chart (interactive chart 3)
