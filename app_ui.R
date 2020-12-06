@@ -66,10 +66,19 @@ scatter_panel <- tabPanel(
 ui <- navbarPage(
 
   title = "The Movie Times",
+  # Intro page
 
-  #plotlyOutput("bar"),
+  # Scatter page
+  scatter_panel,
+
+  # Bar page
+  bar_page
+
+  # Line page
+  # Summary age
+
   #tableOutput("table")
 
-  scatter_panel,
-  bar_page
+
+
 )
