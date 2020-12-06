@@ -4,7 +4,6 @@ library(ggplot2)
 library(plotly)
 
 
-
 # Sourcing Pages
 source("./pages/overview_page.R")
 source("./pages/scatter_page.R")
@@ -64,7 +63,7 @@ scatter_panel <- tabPanel(
 # Fifth Page (summary)
 
 # UI
-ui <- fluidPage(
+ui <- navbarPage(
   title = "Testing bar graph",
   #plotlyOutput("bar"),
   #tableOutput("table")
