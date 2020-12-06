@@ -25,8 +25,8 @@ get_bar_graph <- function(dataframe) {
 
   return(bar_graph)
 }
-
-build_bar_graph <- function(dataframe, measurement){
+#df <- read.csv("../data/midpoint_df.csv", stringsAsFactors = F)
+build_bar_graph <- function(dataframe = df, measurement){
   mutate("revenue" = as.numeric(
     str_sub(usa_gross_income, 2, nchar(usa_gross_income)))) %>%
     mutate("budget" = as.numeric(
@@ -48,3 +48,6 @@ build_bar_graph <- function(dataframe, measurement){
   
   return(bar_graph)
 }
+
+
+#ggplotly(get_bar_graph(df))
