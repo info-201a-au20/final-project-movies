@@ -2,6 +2,8 @@
 library(shiny)
 library(ggplot2)
 library(plotly)
+
+source("./pages/bar_page.R")
 # First Page (introduction)
 
 
@@ -52,7 +54,8 @@ scatter_panel <- tabPanel(
 # UI 
 ui <- fluidPage(
   title = "Testing bar graph",
-  plotlyOutput("bar"),
-  tableOutput("table")
-  #scatter_panel
+  # plotlyOutput("bar"),
+  # tableOutput("table")
+  scatter_panel,
+  bar_page
 )
