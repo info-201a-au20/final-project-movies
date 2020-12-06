@@ -19,5 +19,6 @@ library(plotly)
 # UI 
 ui <- fluidPage(
   title = "Testing bar graph",
-  plotlyOutput("bar")
+  plotlyOutput("bar"),
+  tableOutput("table")
 )

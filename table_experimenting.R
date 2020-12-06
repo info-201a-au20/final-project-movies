@@ -1,15 +1,12 @@
 # Source file in scripts
 source("./scripts/summary_table_function.R")
 
-# Get data
-data <- read.csv("./data/midpoint_df.csv", stringsAsFactors = F)
-
-# Filter data so it only includes genre and year info
-table <- summary_table(data) %>%
-  select(year, common_genre, least_genre)
-
 # Function for finding years where genre is most and least common
-genre_years <- function(genre) {
+build_table <- function(data, genre) {
+  
+  # Filter data so it only includes genre and year info
+  table <- summary_table(data) %>%
+    select(year, common_genre, least_genre)
   
   # Filter for years where genre(s) selected were the least common
   least_common <- table %>%
