@@ -69,12 +69,14 @@ ui <- navbarPage(
   # Intro page
 
   # Scatter page
-  scatter_panel,
+  scatter_page,
 
   # Bar page
-  bar_page
+  bar_page,
 
   # Line page
+  line_page
+  
   # Summary age
 
   #tableOutput("table")
