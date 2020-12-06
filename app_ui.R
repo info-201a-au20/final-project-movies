@@ -3,17 +3,15 @@ library(shiny)
 library(ggplot2)
 library(plotly)
 
-<<<<<<< HEAD
-source("./pages/bar_page.R")
-=======
-# Sourcing Pages
-# source("./pages/overview_page.R")
-# source("./pages/scatter_page.R")
-# source("./pages/bar_page.R")
-source("pages/line_page.R")
-# source("./pages/summary_page.R")
 
->>>>>>> e6ab1eb365d8454ef2de5d2aff933ad734b94877
+# Sourcing Pages
+source("./pages/overview_page.R")
+source("./pages/scatter_page.R")
+source("./pages/bar_page.R")
+source("pages/line_page.R")
+source("./pages/summary_page.R")
+
+
 # First Page (introduction)
 
 
