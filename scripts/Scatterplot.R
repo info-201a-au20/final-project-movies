@@ -27,6 +27,18 @@ get_scatterplot <- function(dataframe) {
   return(scatterplot)
 }
 
+# IDEA: CREATE NEW FUNCTION AND RETURN EDITED DATAFRAME (then pass to ui)
+change_df <- function(dataframe) {
+  data <- dataframe %>%
+    select(genre, avg_vote, year) %>%
+    separate_rows(genre, sep = ", ") %>%
+    group_by(genre, year) %>%
+    mutate("genre_avg_vote" = sum(avg_vote, na.rm = TRUE) / n()) %>%
+    group_by(year)
+  
+  return(data)
+}
+
 # Function that accepts a dataframe and genre and builds a scatterplot of the 
 # genre's corresponding average votes over the years based on dataframe's data
 build_scatterplot <- function(dataframe, genre_input) {
@@ -51,3 +63,5 @@ build_scatterplot <- function(dataframe, genre_input) {
 # Testing build_scatterplot function
 df <- read.csv("./data/midpoint_df.csv", stringsAsFactors = FALSE)
 build_scatterplot(df, "Action")
+
+data <- change_df(df)

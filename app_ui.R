@@ -25,6 +25,7 @@ scatter_sidebar_content <- sidebarPanel(
     label = "Select a movie genre: ",
     choices = list(
       # list out genre options
+      "Action" = "action"
     )
   )
 )
@@ -38,6 +39,8 @@ scatter_main_content <- mainPanel(
 # Creating a `tabPanel()` for the scatterplot page
 scatter_panel <- tabPanel(
   "Scatterplot",
+
+  titlePanel("Popularity of Individual Movie Genres From 1990-2020"),
 
   # Adding a titlePanel to your tab
   titlePanel("Popularity of Individual Movie Genres From 1990-2020"),
@@ -61,9 +64,12 @@ scatter_panel <- tabPanel(
 
 # UI
 ui <- navbarPage(
+
   title = "The Movie Times",
-  # plotlyOutput("bar"),
-  # tableOutput("table")
+  
+  #plotlyOutput("bar"),
+  #tableOutput("table")
+
   scatter_panel,
   bar_page
 )
