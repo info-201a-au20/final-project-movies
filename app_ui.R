@@ -42,9 +42,10 @@ ui <- navbarPage(
   bar_page,
 
   # Line page
-  line_page
+  line_page,
   
-  # Summary age
+  # Summary page
+  summary_page
 
   #tableOutput("table")
 
