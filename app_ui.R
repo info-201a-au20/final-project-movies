@@ -61,7 +61,7 @@ scatter_panel <- tabPanel(
 
 # UI
 ui <- navbarPage(
-  title = "Testing bar graph",
+  title = "The Movie Times",
   # plotlyOutput("bar"),
   # tableOutput("table")
   scatter_panel,
