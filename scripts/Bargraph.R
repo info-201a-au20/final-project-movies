@@ -25,10 +25,13 @@ get_bar_graph <- function(dataframe) {
 
   return(bar_graph)
 }
-#df <- read.csv("../data/midpoint_df.csv", stringsAsFactors = F)
+
 build_bar_graph <- function(dataframe = df, measurement){
-  mutate("revenue" = as.numeric(
-    str_sub(usa_gross_income, 2, nchar(usa_gross_income)))) %>%
+  y_title <- str_to_title(str_replace_all(measurement, "_", " "))
+  
+  dataframe <- dataframe %>%
+    mutate("revenue" = as.numeric(
+      str_sub(usa_gross_income, 2, nchar(usa_gross_income)))) %>%
     mutate("budget" = as.numeric(
       str_sub(budget, 2, nchar(budget)))) %>%
     group_by(year) %>%
@@ -38,16 +41,13 @@ build_bar_graph <- function(dataframe = df, measurement){
               "average_budget" = mean(budget, na.rm = TRUE),
               "median_budget" = median(budget, na.rm = TRUE),
               "total_budget" = sum(budget, na.rm = TRUE)
-              )
+    )
   bar_graph <- ggplot(data = dataframe) +
     geom_col(data = dataframe, aes_string(x = "year",
-                                   y = measurement), fill = "deepskyblue") +
+                                          y = measurement)) +
     xlab("Year") +
-    ylab(paste0(measurement, " (USD)")) +
-    ggtitle(paste0(measurement, " (USD) of Movie Industry by Year (1990 - 2020)"))
+    ylab(paste0(y_title, " (USD)")) +
+    ggtitle(paste0(y_title, " (USD) of Movie Industry by Year (1990 - 2020)"))
   
   return(bar_graph)
 }
-
-
-#ggplotly(get_bar_graph(df))
