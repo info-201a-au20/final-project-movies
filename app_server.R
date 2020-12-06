@@ -4,6 +4,7 @@
 library("ggplot2")
 library("dplyr")
 library("tidyr")
+source("app_ui.R")
 
 # Sourcing our /scripts files
 source("./scripts/summary_info.R")
@@ -42,5 +43,17 @@ server <- function(input, output) {
   
   
   # Render a plotly object returning the line chart (interactive chart 3)
+  
+  # Experiement
+  output$sliderexp <- renderText({
+    message <- paste("range is from", input$slider[1], "to", input$slider[2])
+    return(message)
+  })
+  # Line chart here
+  output$linegraph <- renderPlot({
+    line <- build_line_graph(google_trend_df, input$slider)
+    return(line)
+  })
+  
   
 }

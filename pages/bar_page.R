@@ -15,7 +15,27 @@ measurement_list <- list(
 
 measurement_input <- selectInput(
   inputId = "measurement",
+  label = "Metric",
   choices = measurement_list,
   selected = "Average Budget"
 )
 
+
+bar_sidebar_panel <- sidebarPanel(
+  inputId = "bar_sidebar",
+  measurement_input
+)
+
+bar_main_panel <- mainPanel(
+  inputId <- "bar_main",
+  plotlyOutput("bar")
+)
+
+bar_page <- tabPanel (
+  "barchart",
+  titlePanel("Revenue and Budget metrics of Movie industry (1990 - 2020)"),
+  sidebarLayout(
+    bar_sidebar_panel,
+    bar_main_panel
+  )
+)
