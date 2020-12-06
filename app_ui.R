@@ -28,6 +28,8 @@ source("./pages/summary_page.R")
 
 # UI
 ui <- navbarPage(
+  # theme
+  theme = shinytheme("united"),
 
   title = "The Movie Times",
   # Intro page
