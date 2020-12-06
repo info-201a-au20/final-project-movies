@@ -15,6 +15,7 @@ scatter_sidebar_content <- sidebarPanel(
     label = "Select a movie genre: ",
     choices = list(
       # list out genre options
+      "Action" = "action"
     )
   )
 )
@@ -28,11 +29,7 @@ scatter_main_content <- mainPanel(
 # Creating a `tabPanel()` for the scatterplot page
 scatter_panel <- tabPanel(
   "Scatterplot",
-  
-  # Adding a titlePanel to your tab
   titlePanel("Popularity of Individual Movie Genres From 1990-2020"),
-  
-  # Creating a sidebar layout for this tab (page)
   sidebarLayout(
     scatter_sidebar_content,
     scatter_main_content
@@ -51,8 +48,9 @@ scatter_panel <- tabPanel(
 
 # UI 
 ui <- fluidPage(
-  title = "Testing bar graph",
-  plotlyOutput("bar"),
-  tableOutput("table")
-  #scatter_panel
+  #title = "Testing bar graph",
+  #plotlyOutput("bar"),
+  #tableOutput("table")
+  title = "Testing scatterplot",
+  scatter_panel
 )
