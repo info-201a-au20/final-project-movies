@@ -60,7 +60,7 @@ scatter_panel <- tabPanel(
 # Fifth Page (summary)
 
 # UI
-ui <- fluidPage(
+ui <- navbarPage(
   title = "Testing bar graph",
   # plotlyOutput("bar"),
   # tableOutput("table")
