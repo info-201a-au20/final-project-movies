@@ -4,11 +4,11 @@ library(ggplot2)
 library(plotly)
 
 # Sourcing Pages
-# source("./pages/overview_page.R")
-# source("./pages/scatter_page.R")
-# source("./pages/bar_page.R")
+source("./pages/overview_page.R")
+source("./pages/scatter_page.R")
+source("./pages/bar_page.R")
 source("pages/line_page.R")
-# source("./pages/summary_page.R")
+source("./pages/summary_page.R")
 
 # First Page (introduction)
 
