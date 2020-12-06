@@ -12,7 +12,7 @@ genre_list <- data %>%
 
 # checkboxGroupInput for selecting genres
 genre_checkbox <- checkboxGroupInput(
-  inputId = "genre_selection",
+  inputId = "genre",
   label = "Genre",
   choices = genre_list,
   selected = genre_list

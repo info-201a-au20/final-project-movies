@@ -11,6 +11,7 @@ source("./scripts/summary_table_function.R")
 source("./scripts/Bargraph.R") 
 source("./scripts/linegraph_GT.R")
 source("./scripts/Scatterplot.R")
+source("./table_experimenting.R")
 
 
 # Sourcing our dataframes
@@ -27,6 +28,11 @@ server <- function(input, output) {
     return(scatter)
   })
   
+  # Render a chart supplementing scatter plot
+  output$table <- renderTable({
+    table <- build_table(df, input$genre)
+    return(table)
+  })
   
   # Render a plotly object returning the bar chart (interactive chart 2)
   output$bar <- renderPlotly({
