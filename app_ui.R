@@ -3,12 +3,14 @@ library(shiny)
 library(ggplot2)
 library(plotly)
 
+
 # Sourcing Pages
 source("./pages/overview_page.R")
 source("./pages/scatter_page.R")
 source("./pages/bar_page.R")
 source("pages/line_page.R")
 source("./pages/summary_page.R")
+
 
 # First Page (introduction)
 
@@ -23,6 +25,7 @@ scatter_sidebar_content <- sidebarPanel(
     label = "Select a movie genre: ",
     choices = list(
       # list out genre options
+      "Action" = "action"
     )
   )
 )
@@ -36,6 +39,8 @@ scatter_main_content <- mainPanel(
 # Creating a `tabPanel()` for the scatterplot page
 scatter_panel <- tabPanel(
   "Scatterplot",
+
+  titlePanel("Popularity of Individual Movie Genres From 1990-2020"),
 
   # Adding a titlePanel to your tab
   titlePanel("Popularity of Individual Movie Genres From 1990-2020"),
@@ -58,9 +63,13 @@ scatter_panel <- tabPanel(
 # Fifth Page (summary)
 
 # UI
-ui <- fluidPage(
-  title = "Testing bar graph",
-  plotlyOutput("bar"),
-  tableOutput("table")
-  #scatter_panel
+ui <- navbarPage(
+
+  title = "The Movie Times",
+
+  #plotlyOutput("bar"),
+  #tableOutput("table")
+
+  scatter_panel,
+  bar_page
 )
