@@ -80,7 +80,6 @@ ui <- navbarPage(
   
   # Summary age
 
-
   #tableOutput("table")
 
   
