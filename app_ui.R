@@ -28,9 +28,21 @@ source("./pages/summary_page.R")
 
 # UI
 ui <- navbarPage(
-  title = "Testing bar graph",
-  #plotlyOutput("bar"),
-  #tableOutput("table")
+
+  title = "The Movie Times",
+  # Intro page
+
+  # Scatter page
   scatter_page,
+
+  # Bar page
   bar_page
+
+  # Line page
+  # Summary age
+
+  #tableOutput("table")
+
+
+
 )

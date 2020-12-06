@@ -49,7 +49,7 @@ server <- function(input, output) {
     message <- paste("range is from", input$slider[1], "to", input$slider[2])
     return(message)
   })
-  
+  # Line chart here
   output$linegraph <- renderPlot({
     line <- build_line_graph(google_trend_df, input$slider)
     return(line)

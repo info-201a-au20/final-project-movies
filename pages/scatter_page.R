@@ -43,7 +43,7 @@ scatter_main_content <- mainPanel(
 )
 
 # Creating a `tabPanel()` for the scatterplot page
-scatter_panel <- tabPanel(
+scatter_page <- tabPanel(
   "Scatterplot",
   
   titlePanel("Popularity of Individual Movie Genres From 1990-2020"),
