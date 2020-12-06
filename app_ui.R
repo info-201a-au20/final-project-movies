@@ -33,7 +33,7 @@ ui <- navbarPage(
   # Intro page
   
   # Scatter page
-  scatter_panel,
+  scatter_page,
   
   # Bar page
 
