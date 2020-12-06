@@ -20,10 +20,20 @@ measurement_input <- selectInput(
   selected = "Average Budget"
 )
 
+year_slider <- sliderInput(
+    inputId = "year_slider",
+    label = "Years",
+    min = 1990,
+    max = 2020,
+    value = c(1990, 2020),
+    round = TRUE,
+    dragRange = TRUE
+  )
 
 bar_sidebar_panel <- sidebarPanel(
   inputId = "bar_sidebar",
-  measurement_input
+  measurement_input,
+  year_slider
 )
 
 bar_main_panel <- mainPanel(

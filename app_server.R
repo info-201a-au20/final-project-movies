@@ -37,7 +37,7 @@ server <- function(input, output) {
   
   # Render a plotly object returning the bar chart (interactive chart 2)
   output$bar <- renderPlotly({
-    bar <- build_bar_graph(df, input$measurement)
+    bar <- build_bar_graph(df, input$measurement, input$year_slider)
     return(bar)
   })
   

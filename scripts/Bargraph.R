@@ -26,10 +26,15 @@ get_bar_graph <- function(dataframe) {
   return(bar_graph)
 }
 
-build_bar_graph <- function(dataframe = df, measurement){
+build_bar_graph <- function(dataframe = df, measurement, yearList){
+  # make min and max x year values from slider
+  xmin <- as.numeric(yearList[1])
+  xmax <- as.numeric(yearList[2])
+  
   y_title <- str_to_title(str_replace_all(measurement, "_", " "))
   
   dataframe <- dataframe %>%
+    filter(year >= xmin, year <= xmax) %>%
     mutate("revenue" = as.numeric(
       str_sub(usa_gross_income, 2, nchar(usa_gross_income)))) %>%
     mutate("budget" = as.numeric(
@@ -48,6 +53,7 @@ build_bar_graph <- function(dataframe = df, measurement){
     xlab("Year") +
     ylab(paste0(y_title, " (USD)")) +
     ggtitle(paste0(y_title, " (USD) of Movie Industry by Year (1990 - 2020)"))
+    
   
   return(bar_graph)
 }
