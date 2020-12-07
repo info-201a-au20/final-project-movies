@@ -26,7 +26,9 @@ scatter_main_content <- mainPanel(
 # Creating a `tabPanel()` for the scatterplot page
 scatter_page <- tabPanel(
   "Genre Popularity",
-  titlePanel("Popularity of Movie Genres From 1990-2020"),
+  includeCSS("styling.css"),
+  titlePanel(
+    tags$h1("Popularity of Movie Genres From 1990-2020")),
   sidebarLayout(
     scatter_sidebar_content,
     scatter_main_content
