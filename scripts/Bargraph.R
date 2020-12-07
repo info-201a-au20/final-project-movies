@@ -49,7 +49,7 @@ build_bar_graph <- function(dataframe = df, measurement, yearList){
     )
   bar_graph <- ggplot(data = dataframe) +
     geom_col(data = dataframe, aes_string(x = "year",
-                                          y = measurement)) +
+                                          y = measurement), fill = "firebrick") +
     xlab("Year") +
     ylab(paste0(y_title, " (USD)")) +
     ggtitle(paste0(y_title, " (USD) of Movie Industry by Year (1990 - 2020)"))
