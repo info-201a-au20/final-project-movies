@@ -16,6 +16,8 @@ summary_page <- tabPanel(
   #          color: #FFF;}")
   # ),
   fluidPage(
+    titlePanel(title = "Insights"),
+    p("Click on the words below to view insights based on our project"),
     bsCollapse(
       bsCollapsePanel("Genre Insights", includeHTML("insight_one.html")),
       bsCollapsePanel("Budget Insights", includeHTML("insight_two.html")),
