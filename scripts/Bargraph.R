@@ -11,9 +11,10 @@ library(plotly)
 get_bar_graph <- function(dataframe) {
   # First wrangle the dataframe to get the values I want
   dataframe <- dataframe %>%
+    suppressWarnings(
     mutate("revenue" = as.numeric(
       str_sub(usa_gross_income, 2, nchar(usa_gross_income))
-    )) %>%
+    ))) %>%
     group_by(year) %>%
     summarise("average_revenue" = mean(revenue, na.rm = TRUE))
   bar_graph <- ggplot(data = dataframe) +
