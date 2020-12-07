@@ -33,6 +33,7 @@ ui <- navbarPage(
 
   title = "The Movie Times",
   # Intro page
+  intro_page,
   
   # Scatter page
   scatter_page,
