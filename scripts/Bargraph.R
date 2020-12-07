@@ -53,7 +53,14 @@ build_bar_graph <- function(dataframe = df, measurement, yearList){
                                           y = measurement), fill = "firebrick") +
     xlab("Year") +
     ylab(paste0(y_title, " (USD)")) +
-    ggtitle(paste0(y_title, " (USD) of Movie Industry by Year (1990 - 2020)"))
+    ggtitle(paste0(y_title, " (USD) of Movie Industry by Year (1990 - 2020)")) +
+    # geom_vline(xintercept = 1991, linetype="dotted", color = "blue") + tooltip("Introduction of Internet") +
+    # geom_vline(xintercept = 1997, linetype="dotted", color = "blue") + tooltip("Creation of Internet") +
+    # geom_vline(xintercept = 2001, linetype="dotted", color = "blue") + tooltip("9/11 Attacks") +
+    # geom_vline(xintercept = 2005, linetype="dotted", color = "blue") + tooltip("Creation of Youtube") +
+    # geom_vline(xintercept = 2008, linetype="dotted", color = "blue") + tooltip("The Great Recession") +
+    # geom_vline(xintercept = 2020, linetype="dotted", color = "blue") + tooltip("COVID-19 Pandemic")
+  
     
   
   return(bar_graph)
