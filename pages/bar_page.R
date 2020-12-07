@@ -43,7 +43,8 @@ bar_main_panel <- mainPanel(
 
 bar_page <- tabPanel (
   "barchart",
-  titlePanel("Revenue and Budget metrics of Movie industry (1990 - 2020)"),
+  titlePanel(
+    tags$h1("Revenue and Budget metrics of Movie industry (1990 - 2020)")),
   sidebarLayout(
     bar_sidebar_panel,
     bar_main_panel
