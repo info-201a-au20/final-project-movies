@@ -14,7 +14,7 @@ scatter_sidebar_content <- sidebarPanel(
     #choices = data$genre,
     selected = "Action", 
     choices = unique(data$genre)
-  )
+  ) 
 )
 
 # Creating a `mainPanel()` for the scatterplot page that contains the
