@@ -34,22 +34,17 @@ ui <- navbarPage(
   title = "The Movie Times",
   # Intro page
   intro_page,
-  
+
   # Scatter page
   scatter_page,
-  
-  # Bar page
 
+  # Bar page
   bar_page,
 
   # Line page
   line_page,
-  
+
   # Summary page
   summary_page
 
-  #tableOutput("table")
-
-  
-  
 )

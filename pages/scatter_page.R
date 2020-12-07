@@ -45,10 +45,10 @@ scatter_main_content <- mainPanel(
 # Creating a `tabPanel()` for the scatterplot page
 scatter_page <- tabPanel(
   "Scatterplot",
-  
+
   # Adding a titlePanel to your tab
   titlePanel("Popularity of Individual Movie Genres From 1990-2020"),
-  
+
   # Creating a sidebar layout for this tab (page)
   sidebarLayout(
     scatter_sidebar_content,
