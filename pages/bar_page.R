@@ -46,7 +46,7 @@ bar_main_panel <- mainPanel(
   brought in and spent by the movie industry by year. TO do this, the graph looks at
   three main values (average, median, and total) for either budget or revenue.
   The graph also has the option of specifiying a date range, to look at the impact 
-  of events on specific years in the movie industry."),
+  of events of specific years on the movie industry."),
 )
 
 bar_page <- tabPanel (
