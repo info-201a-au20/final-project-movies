@@ -46,12 +46,14 @@ server <- function(input, output) {
   
   # Experiement
   output$sliderexp <- renderText({
-    message <- paste("range is from", input$slider[1], "to", input$slider[2])
+    message <- paste("range is from", input$slider[1], "to", input$slider[2],
+                     "also", input$quarantine_button)
     return(message)
   })
   # Line chart here
-  output$linegraph <- renderPlot({
-    line <- build_line_graph(google_trend_df, input$slider)
+  output$linegraph <- renderPlotly({
+    line <- build_line_graph(google_trend_df, input$slider,
+                             input$quarantine_button)
     return(line)
   })
   
