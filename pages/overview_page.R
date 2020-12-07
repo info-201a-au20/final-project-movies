@@ -4,12 +4,8 @@ intro_page <- tabPanel(
   title = "About",
   fluidPage(
     # Image
-    
-    
-      tags$img(
-        src = ".www/movietheaterseats.jpg",
-        style = "margin-top: -14px; padding-right:10px;padding-bottom:10px",
-        height = 60)
+    tags$img(src = ".www/img/movietheater.png", alt = "Image of Movie Theater")
+    # includeHTML("intro_page.html")
     
   )
 )
