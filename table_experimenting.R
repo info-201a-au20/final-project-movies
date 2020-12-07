@@ -26,4 +26,4 @@ build_table <- function(data, genre) {
   result <- c(least_common, most_common)
   return(result)
 }
-#test <- summary_table(df)
+
