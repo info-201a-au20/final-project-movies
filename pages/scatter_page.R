@@ -26,15 +26,13 @@ data <- change_df(data)
 # Creating a `sidebarPanel()` for the scatterplot page that contains a
 # `selectInput` widget for selecting a movie genre to plot
 scatter_sidebar_content <- sidebarPanel(
-  selectInput( # starting out with single input, may change to checkboxGroupInput
-  #checkboxGroupInput(
+  #selectInput( # starting out with single input, may change to checkboxGroupInput
+  checkboxGroupInput(
     inputId = "genre_var",
-    label = "Select a movie genre: ",
-    #choices = list(
-    #  data$genre
-    #)
-    choices = data$genre
-    #choices = unique(data$genre)
+    label = "Select movie genre(s): ",
+    #choices = data$genre,
+    selected = "Action",
+    choices = unique(data$genre)
   )
 )
 
@@ -55,6 +53,5 @@ scatter_page <- tabPanel(
   sidebarLayout(
     scatter_sidebar_content,
     scatter_main_content
-    
   )
 )
