@@ -5,6 +5,7 @@ library("ggplot2")
 library("dplyr")
 library("tidyr")
 library("shinythemes")
+library("shinyBS")
 # Source ui and server
 source("app_server.R")
 source("app_ui.R")

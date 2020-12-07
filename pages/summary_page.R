@@ -19,13 +19,33 @@ summary_page <- tabPanel(
     bsCollapse(
       bsCollapsePanel("Genre Insights", includeHTML("insight_one.html")),
       bsCollapsePanel("Budget Insights", includeHTML("insight_two.html")),
-      bsCollapsePanel("Significant Events Insights",
-                      bsCollapsePanel("1991 - Introduction of the Internet", includeHTML("insight_1991.html")),
-                      bsCollapsePanel("1997 - Creation of Netflix", includeHTML("insight_1997.html")),
-                      bsCollapsePanel("2001 - 9/11 Attacks", includeHTML("insight_2001.html")),
-                      bsCollapsePanel("2005 - Creation of Youtube", includeHTML("insight_2005.html")),
-                      bsCollapsePanel("2008 - The Great Recession", includeHTML("insight_2008.html")),
-                      bsCollapsePanel("2020 - COVID-19 Pandemic", includeHTML("insight_2020.html")))
+      bsCollapsePanel(
+        "Significant Events Insights",
+        bsCollapsePanel(
+          "1991 - Introduction of the Internet",
+          includeHTML("insight_1991.html")
+          ),
+        bsCollapsePanel(
+          "1997 - Creation of Netflix",
+          includeHTML("insight_1997.html")
+          ),
+        bsCollapsePanel(
+          "2001 - 9/11 Attacks",
+          includeHTML("insight_2001.html")
+          ),
+        bsCollapsePanel(
+          "2005 - Creation of Youtube",
+          includeHTML("insight_2005.html")
+          ),
+        bsCollapsePanel(
+          "2008 - The Great Recession",
+          includeHTML("insight_2008.html")
+          ),
+        bsCollapsePanel(
+          "2020 - COVID-19 Pandemic",
+          includeHTML("insight_2020.html")
+          )
+        )
       )
     )
   )
