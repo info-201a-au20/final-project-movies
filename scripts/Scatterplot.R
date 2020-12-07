@@ -27,7 +27,8 @@ get_scatterplot <- function(dataframe) {
   return(scatterplot)
 }
 
-# IDEA: CREATE NEW FUNCTION AND RETURN EDITED DATAFRAME (then pass to ui)
+# Function that accepts and changes a dataframe to separate and group by movie
+# genres
 change_df <- function(dataframe) {
   data <- dataframe %>%
     select(genre, avg_vote, year) %>%
@@ -35,7 +36,7 @@ change_df <- function(dataframe) {
     group_by(genre, year) %>%
     mutate("genre_avg_vote" = sum(avg_vote, na.rm = TRUE) / n()) %>%
     group_by(year)
-  
+
   return(data)
 }
 
@@ -49,23 +50,16 @@ build_scatterplot <- function(dataframe, genre_input) {
     select(genre, avg_vote, year) %>%
     separate_rows(genre, sep = ", ") %>%
     group_by(genre, year) %>%
-    #filter(genre == genre_input) %>% # filter dataframe based on inputted genre
-    filter(genre %in% genre_input) %>%
+    filter(genre %in% genre_input) %>% # filter dataframe for inputted genre(s)
     mutate("genre_avg_vote" = sum(avg_vote, na.rm = TRUE) / n()) %>%
     group_by(year)
-  
+
   scatterplot <- ggplot(data = data) +
-    #geom_point(mapping = aes(x = year, y = genre_avg_vote)) +
     geom_point(mapping = aes(x = year, y = genre_avg_vote, color = genre)) +
-    ggtitle(paste0("Average Vote of ", genre_input, " Genre(s) by Year (1990 - 2020)")) +
+    ggtitle(paste0("Average Vote of ", genre_input, 
+                   " Genre(s) by Year (1990 - 2020)")) +
     xlab("Year") +
     ylab("Average vote (out of 10)")
-  
+
   return(scatterplot)
 }
-
-# Testing build_scatterplot function
-#df <- read.csv("./data/midpoint_df.csv", stringsAsFactors = FALSE)
-#build_scatterplot(df, "Action")
-
-#data <- change_df(df)
