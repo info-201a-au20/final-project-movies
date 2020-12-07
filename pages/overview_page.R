@@ -4,7 +4,7 @@ intro_page <- tabPanel(
   title = "About",
   fluidPage(
     # Image
-    tags$img(src = ".www/img/movietheater.png", alt = "Image of Movie Theater")
+    img(src = "movietheater.png", alt = "Image of Movie Theater")
     # includeHTML("intro_page.html")
     
   )
