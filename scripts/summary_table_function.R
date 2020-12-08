@@ -66,4 +66,4 @@ build_genre_table <- function(dataframe) {
      select(year, avg_budget) %>%
      filter(!is.na(avg_budget)) %>%
      mutate(avg_budget = format(avg_budget, big.mark = ",", scientific = FALSE))
- } 
+ }

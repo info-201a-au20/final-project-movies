@@ -3,7 +3,7 @@ summary_page <- tabPanel(
   title = "Insights and Summary",
   fluidPage(
     includeCSS("styling.css"),
-    HTML('<h1>Insights</h1>'),
+    HTML("<h1>Insights</h1>"),
     includeHTML("insight_one.html"),
     bsCollapse(
       bsCollapsePanel(
@@ -16,7 +16,7 @@ summary_page <- tabPanel(
       "Click to view average budget across years",
       tableOutput("budget_table")
   ),
-    HTML('<h2>Significant Events Insights</h2>'),
+    HTML("<h2>Significant Events Insights</h2>"),
     bsCollapse(
       bsCollapsePanel(
         "1991 - Introduction of the Internet",
@@ -43,8 +43,15 @@ summary_page <- tabPanel(
         includeHTML("insight_2020.html")
       )
     ),
-  tags$footer(tags$p("Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth, Ha Nhat To: ", 
-                     tags$a(id = "url", href= "https://github.com/info-201a-au20/final-project-movies", "Github URL"))
-              )
+  tags$footer(
+    tags$p(
+      "Gisele Fox, Emiri Nishizawa, Melina Perraut,
+      Roshni Srikanth, Ha Nhat To: ",
+      tags$a(
+        id = "url",
+        href = "https://github.com/info-201a-au20/final-project-movies",
+        "Github URL")
+      )
+    )
   )
 )
