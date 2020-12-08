@@ -48,7 +48,7 @@ build_bar_graph <- function(dataframe = df, measurement, year_list) {
               "median_budget" = median(budget, na.rm = TRUE),
               "total_budget" = sum(budget, na.rm = TRUE)
     )
-  print(dataframe)
+  
   bar_graph <- ggplotly(
     ggplot(data = dataframe) +
     geom_col(mapping = aes_string(x = "year",
@@ -57,7 +57,7 @@ build_bar_graph <- function(dataframe = df, measurement, year_list) {
              fill = "firebrick") +
     xlab("Year") +
     ylab(paste0(y_title, " (USD)")) +
-    ggtitle(paste0(y_title, " (USD) of Movie Industry by Year (1990 - 2020)")) +
+    ggtitle(paste0(y_title, " (USD) of Movie Industry by Year (", xmin, " - ", xmax, ")")) +
     geom_vline(xintercept = 1991, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 1997, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2001, linetype = "dotted", color = "white") +
