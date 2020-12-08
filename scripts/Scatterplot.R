@@ -2,6 +2,7 @@
 library(dplyr)
 library(ggplot2)
 library(tidyr)
+library(styler)
 library(lintr)
 library(stringr)
 
@@ -40,10 +41,10 @@ change_df <- function(dataframe) {
   return(data)
 }
 
-# Function that accepts a dataframe and genre and builds a scatterplot of the 
+# Function that accepts a dataframe and genre and builds a scatterplot of the
 # genre's corresponding average votes over the years based on dataframe's data
-build_scatterplot <- function(dataframe, genre_input) { 
-  genre_titles <- paste(genre_input, collapse = ' ')
+build_scatterplot <- function(dataframe, genre_input) {
+  genre_titles <- paste(genre_input, collapse = " ")
   # Manipulate the dataframe
   data <- dataframe %>%
     select(genre, avg_vote, year) %>%
@@ -55,15 +56,17 @@ build_scatterplot <- function(dataframe, genre_input) {
 
   scatterplot <- ggplot(data = data) +
     geom_point(mapping = aes(x = year, y = genre_avg_vote, color = genre)) +
-    ggtitle(paste0("Average Vote of ", genre_titles, 
-                   " Genre(s) by Year (1990 - 2020)")) +
+    ggtitle(paste0(
+      "Average Vote of ", genre_titles,
+      " Genre(s) by Year (1990 - 2020)"
+    )) +
     xlab("Year") +
     ylab("Average vote (out of 10)") +
     labs(color = "Genre") +
     geom_vline(xintercept = 1991, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 1997, linetype = "dotted", color = "white") +
-    geom_vline(xintercept = 2001, linetype = "dotted", color = "white") + 
-    geom_vline(xintercept = 2005, linetype = "dotted", color = "white") + 
+    geom_vline(xintercept = 2001, linetype = "dotted", color = "white") +
+    geom_vline(xintercept = 2005, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2008, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2020, linetype = "dotted", color = "white")
 
