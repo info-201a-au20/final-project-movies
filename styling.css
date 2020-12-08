@@ -26,9 +26,13 @@ p {
 }
     
 footer {
-  color: #FF853E;
-  background: #840404;
+  color: #840404;
   text-align:left;
+}
+
+#url {
+  color: #FF6f17;
+  text-align: right;
 }
   
 /* overview_page.R: Cropping image */

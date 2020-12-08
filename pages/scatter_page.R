@@ -21,8 +21,9 @@ scatter_sidebar_content <- sidebarPanel(
 # `plotlyOutput()` of the scatter
 scatter_main_content <- mainPanel(
   plotlyOutput("scatter"), 
-  tags$footer(tags$p("Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth, Ha Nhat To"), 
-              tags$a(href= "https://github.com/info-201a-au20/final-project-movies"))
+  tags$footer(tags$p("Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth, Ha Nhat To: ", 
+                     tags$a(id = "url", href= "https://github.com/info-201a-au20/final-project-movies", "Github URL"))
+  )
 )
 
 # Creating a `tabPanel()` for the scatterplot page
