@@ -10,20 +10,6 @@ source("./pages/bar_page.R")
 source("pages/line_page.R")
 source("./pages/summary_page.R")
 
-# First Page (introduction)
-
-
-# Second Page (interactive chart 1)
-
-
-# Third Page (interactive chart 2)
-
-
-# Fourth Page (interactive chart 3)
-
-
-# Fifth Page (summary)
-
 # UI
 ui <- navbarPage(
   # theme

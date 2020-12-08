@@ -27,14 +27,14 @@ get_bar_graph <- function(dataframe) {
   return(bar_graph)
 }
 
-build_bar_graph <- function(dataframe = df, measurement, year_list) {
+build_bar_graph <- function(dataframe, measurement, year_list) {
   # make min and max x year values from slider
   xmin <- as.numeric(year_list[1])
   xmax <- as.numeric(year_list[2])
   
   y_title <- str_to_title(str_replace_all(measurement, "_", " "))
 
-  dataframe <- dataframe %>%
+  new_dataframe <- dataframe %>%
     filter(year >= xmin, year <= xmax) %>%
     mutate("revenue" = as.numeric(
       str_sub(usa_gross_income, 2, nchar(usa_gross_income)))) %>%
@@ -50,11 +50,11 @@ build_bar_graph <- function(dataframe = df, measurement, year_list) {
     )
   
   bar_graph <- ggplotly(
-    ggplot(data = dataframe) +
-    geom_col(mapping = aes_string(x = "year",
+    ggplot(data = new_dataframe) +
+    geom_col(data = new_dataframe, aes_string(x = "year",
              y = measurement), 
-             # text = paste0("y_title", ": ", measurement)),
              fill = "firebrick") +
+    suppressWarnings(xlim(xmin - 1, xmax +1)) +
     xlab("Year") +
     ylab(paste0(y_title, " (USD)")) +
     ggtitle(paste0(y_title, " (USD) of Movie Industry by Year (", xmin, " - ", xmax, ")")) +
@@ -64,7 +64,8 @@ build_bar_graph <- function(dataframe = df, measurement, year_list) {
     geom_vline(xintercept = 2005, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2008, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2020, linetype = "dotted", color = "white") #,
-      # tooltip = "text"
+      
 )
   return(bar_graph)
 }
+
