@@ -1,6 +1,7 @@
 # Load packages
 library(dplyr)
 library(ggplot2)
+library(plotly)
 library(tidyr)
 library(styler)
 library(lintr)
@@ -54,7 +55,8 @@ build_scatterplot <- function(dataframe, genre_input) {
     mutate("genre_avg_vote" = sum(avg_vote, na.rm = TRUE) / n()) %>%
     group_by(year)
 
-  scatterplot <- ggplot(data = data) +
+  scatterplot <- ggplotly(
+    ggplot(data = data) +
     geom_point(mapping = aes(x = year, y = genre_avg_vote, color = genre)) +
     ggtitle(paste0(
       "Average Vote of ", genre_titles,
@@ -69,6 +71,7 @@ build_scatterplot <- function(dataframe, genre_input) {
     geom_vline(xintercept = 2005, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2008, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2020, linetype = "dotted", color = "white")
+  )
 
   return(scatterplot)
 }

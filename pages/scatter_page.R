@@ -47,7 +47,7 @@ scatter_page <- tabPanel(
   fluidPage(
     includeCSS("styling.css"),
     titlePanel(
-      tags$h1("Popularity of Movie Genres From 1990-2020")
+      tags$h1("How has the popularity of movie genres changed from 1990-2020?")
     ),
     sidebarLayout(
       scatter_sidebar_content,
