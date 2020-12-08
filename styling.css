@@ -9,7 +9,12 @@ h2 {
 p {
   text-align: left;
 }
-
+footer {
+  color: #FF853E;
+  background: #840404;
+  text-align:left;
+}
+  
 /* overview_page.R: Cropping image */
 #cropped_image {
   height: 150px;

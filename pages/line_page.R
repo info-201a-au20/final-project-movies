@@ -36,7 +36,9 @@ main_line <- mainPanel(
     point on the chart for the given time (one year after the movie was released
     up until Nov 2020). A value of 100 is the peak popularity for the term. A 
     value of 50 means that the term is half as popular. A score of 0 means there
-    was not enough data for this term.")
+    was not enough data for this term."), 
+  tags$footer(tags$p("Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth, Ha Nhat To"), 
+              tags$a(href= "https://github.com/info-201a-au20/final-project-movies"))
 )
 
 
