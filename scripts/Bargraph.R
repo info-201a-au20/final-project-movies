@@ -38,8 +38,8 @@ build_bar_graph <- function(dataframe = df, measurement, year_list) {
     filter(year >= xmin, year <= xmax) %>%
     mutate("revenue" = as.numeric(
       str_sub(usa_gross_income, 2, nchar(usa_gross_income)))) %>%
-    mutate("budget" = as.numeric(
-      str_sub(budget, 2, nchar(budget)))) %>%
+    mutate("budget" = suppressWarnings(as.numeric(
+      str_sub(budget, 2, nchar(budget))))) %>%
     group_by(year) %>%
     summarise("average_revenue" = mean(revenue, na.rm = TRUE),
               "median_revenue" = median(revenue, na.rm = TRUE),
@@ -49,7 +49,8 @@ build_bar_graph <- function(dataframe = df, measurement, year_list) {
               "total_budget" = sum(budget, na.rm = TRUE)
     )
 
-  bar_graph <- ggplot(data = dataframe) +
+  bar_graph <- ggplotly(
+    ggplot(data = dataframe, aes(text = paste0(y_title, ":"))) +
     geom_col(data = dataframe, aes_string(x = "year",
              y = measurement), fill = "firebrick") +
     xlab("Year") +
@@ -60,7 +61,8 @@ build_bar_graph <- function(dataframe = df, measurement, year_list) {
     geom_vline(xintercept = 2001, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2005, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2008, linetype = "dotted", color = "white") +
-    geom_vline(xintercept = 2020, linetype = "dotted", color = "white")
-
+    geom_vline(xintercept = 2020, linetype = "dotted", color = "white"),
+      tooltip = "text"
+)
   return(bar_graph)
 }

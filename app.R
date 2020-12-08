@@ -2,6 +2,7 @@
 # Load libraries
 library("shiny")
 library("ggplot2")
+library("plotly")
 library("dplyr")
 library("tidyr")
 library("shinythemes")
