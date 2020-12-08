@@ -28,7 +28,6 @@ sidebar_line <- sidebarPanel(
 
 # Main Panel
 main_line <- mainPanel(
-#  h1("How has the 2020 Coronavirus Pandemic Affected Pandemic Related Movies?"),
   plotlyOutput("linegraph"),
   h2("About the Data:"),
   p("This data was sourced from the website googletrends.com. The points
