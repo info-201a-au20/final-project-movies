@@ -51,8 +51,9 @@ build_bar_graph <- function(dataframe, measurement, year_list) {
   
   bar_graph <- ggplotly(
     ggplot(data = new_dataframe) +
-    geom_col(data = new_dataframe, aes_string(x = "year",
-             y = measurement), 
+    geom_col(data = new_dataframe, aes(x = year,
+             y = !!ensym(measurement),
+             text = paste0(y_title, ": $", round(!!ensym(measurement)), 2)), 
              fill = "firebrick") +
     suppressWarnings(xlim(xmin - 1, xmax +1)) +
     xlab("Year") +
@@ -63,7 +64,10 @@ build_bar_graph <- function(dataframe, measurement, year_list) {
     geom_vline(xintercept = 2001, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2005, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2008, linetype = "dotted", color = "white") +
-    geom_vline(xintercept = 2020, linetype = "dotted", color = "white") #,
+    geom_vline(xintercept = 2020, linetype = "dotted", color = "white"),
+    tooltip = "text"
+    
+    
       
 )
   return(bar_graph)
