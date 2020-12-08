@@ -38,7 +38,11 @@ scatter_main_content <- mainPanel(
          the average vote for each movie was applied to each of the
          movie's genres. Please note that the scatterplot is interactive, so you
          can hover over each of the data points to see the year, average vote,
-         and genre.")
+         and genre.
+         The significant events that we looked at were in 1991 
+         (Introduction of the Internet), 1997 (Creation of Netflix), 2001 
+         (9/11), 2005 (Creation of Youtube), 2008 (Great Recession), and 2020 
+         (Coronavirus Pandemic).")
 )
 
 # Creating a `tabPanel()` for the scatterplot page
@@ -47,7 +51,7 @@ scatter_page <- tabPanel(
   fluidPage(
     includeCSS("styling.css"),
     titlePanel(
-      tags$h1("How has the popularity of movie genres changed from 1990-2020?")
+      tags$h1("How has the Popularity of Movie Genres Changed From 1990-2020?")
     ),
     sidebarLayout(
       scatter_sidebar_content,
