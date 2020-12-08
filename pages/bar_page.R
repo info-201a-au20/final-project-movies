@@ -39,7 +39,7 @@ bar_sidebar_panel <- sidebarPanel(
 
 bar_main_panel <- mainPanel(
   plotlyOutput("bar"),
-  tags$h2(tags$strong("About Chart:")),
+  tags$h2("About Chart:"),
   tags$p("One of the questions we wanted to answer
   with our data was how different national and global events impacted the movie
   industry. To answer this, this graph looks at the numbers for the money that
@@ -49,22 +49,24 @@ bar_main_panel <- mainPanel(
   at the impact of events of specific years on the movie industry. The
   significant events that we looked at were in 1991 (Introduction of the
   Internet), 1997 (Creation of Netflix), 2001 (9/11), 2005 (Creation of
-  Youtube), 2008 (Great Recession), and 2020 (Coronavirus Pandemic)"),
-  tags$footer(tags$p("Gisele Fox, Emiri Nishizawa, Melina Perraut,
-                     Roshni Srikanth, Ha Nhat To: ",
-                     tags$a(id = "url",
-  href = "https://github.com/info-201a-au20/final-project-movies",
-  "Github URL"))
-  )
+  Youtube), 2008 (Great Recession), and 2020 (Coronavirus Pandemic)")
 )
 
 bar_page <- tabPanel(
   "Finance",
-  includeCSS("styling.css"),
-  titlePanel(
-    tags$h1("Financial Metrics of the Movie industry (1990 - 2020)")),
-  sidebarLayout(
-    bar_sidebar_panel,
-    bar_main_panel
+  fluidPage(
+    includeCSS("styling.css"),
+    titlePanel(
+      tags$h1("How Did Different Global Events Effect the Finances of the Movie Industy?")),
+    sidebarLayout(
+      bar_sidebar_panel,
+      bar_main_panel
+    ),
+    tags$footer(tags$p(
+      "Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth,
+    Ha Nhat To: ",
+      tags$a(id = "url",
+             href = "https://github.com/info-201a-au20/final-project-movies",
+             "Github URL")))
   )
 )

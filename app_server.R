@@ -63,7 +63,8 @@ server <- function(input, output) {
     build_budget_table(df) %>%
       rename(
         "Year" = "year",
-        "Average Budget ($)" = "avg_budget"
+        "Average Budget ($)" = "avg_budget",
+        "Average Revenue ($)" = "avg_income"
       )
   })
 

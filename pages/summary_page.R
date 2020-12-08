@@ -13,7 +13,7 @@ summary_page <- tabPanel(
     ),
     includeHTML("insight_two.html"),
     bsCollapsePanel(
-      "Click to view average budget across years",
+      "Click to view average budget and revenue across years",
       tableOutput("budget_table")
   ),
     HTML("<h2>Significant Events Insights</h2>"),

@@ -31,15 +31,15 @@ build_bar_graph <- function(dataframe = df, measurement, year_list) {
   # make min and max x year values from slider
   xmin <- as.numeric(year_list[1])
   xmax <- as.numeric(year_list[2])
-
+  
   y_title <- str_to_title(str_replace_all(measurement, "_", " "))
 
   dataframe <- dataframe %>%
     filter(year >= xmin, year <= xmax) %>%
     mutate("revenue" = as.numeric(
       str_sub(usa_gross_income, 2, nchar(usa_gross_income)))) %>%
-    mutate("budget" = as.numeric(
-      str_sub(budget, 2, nchar(budget)))) %>%
+    mutate("budget" = suppressWarnings(as.numeric(
+      str_sub(budget, 2, nchar(budget))))) %>%
     group_by(year) %>%
     summarise("average_revenue" = mean(revenue, na.rm = TRUE),
               "median_revenue" = median(revenue, na.rm = TRUE),
@@ -48,10 +48,13 @@ build_bar_graph <- function(dataframe = df, measurement, year_list) {
               "median_budget" = median(budget, na.rm = TRUE),
               "total_budget" = sum(budget, na.rm = TRUE)
     )
-
-  bar_graph <- ggplot(data = dataframe) +
-    geom_col(data = dataframe, aes_string(x = "year",
-             y = measurement), fill = "firebrick") +
+  print(dataframe)
+  bar_graph <- ggplotly(
+    ggplot(data = dataframe) +
+    geom_col(mapping = aes_string(x = "year",
+             y = measurement), 
+             # text = paste0("y_title", ": ", measurement)),
+             fill = "firebrick") +
     xlab("Year") +
     ylab(paste0(y_title, " (USD)")) +
     ggtitle(paste0(y_title, " (USD) of Movie Industry by Year (1990 - 2020)")) +
@@ -60,7 +63,8 @@ build_bar_graph <- function(dataframe = df, measurement, year_list) {
     geom_vline(xintercept = 2001, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2005, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2008, linetype = "dotted", color = "white") +
-    geom_vline(xintercept = 2020, linetype = "dotted", color = "white")
-
+    geom_vline(xintercept = 2020, linetype = "dotted", color = "white") #,
+      # tooltip = "text"
+)
   return(bar_graph)
 }
