@@ -18,6 +18,7 @@ scatter_sidebar_content <- sidebarPanel(
 # Creating a `mainPanel()` for the scatterplot page that contains the
 # `plotlyOutput()` of the scatter
 scatter_main_content <- mainPanel(
+
   plotlyOutput("scatter"),
   tags$h2(tags$strong("About Scatterplot:")), 
   tags$p("One of the questions we wanted to consider was the popularity of 
@@ -31,6 +32,8 @@ scatter_main_content <- mainPanel(
          movies' genres. Please note that the scatterplot is interactive, so you 
          can hover over each of the data points to see the year, average vote, 
          and genre."),
+  tags$footer(tags$p("Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth, Ha Nhat To"), 
+              tags$a(href= "https://github.com/info-201a-au20/final-project-movies"))
 )
 
 # Creating a `tabPanel()` for the scatterplot page
