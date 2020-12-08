@@ -27,13 +27,13 @@ get_bar_graph <- function(dataframe) {
   return(bar_graph)
 }
 
-build_bar_graph <- function(dataframe = df, measurement, yearList){
+build_bar_graph <- function(dataframe = df, measurement, year_list) {
   # make min and max x year values from slider
-  xmin <- as.numeric(yearList[1])
-  xmax <- as.numeric(yearList[2])
-  
+  xmin <- as.numeric(year_list[1])
+  xmax <- as.numeric(year_list[2])
+
   y_title <- str_to_title(str_replace_all(measurement, "_", " "))
-  
+
   dataframe <- dataframe %>%
     filter(year >= xmin, year <= xmax) %>%
     mutate("revenue" = as.numeric(
@@ -48,21 +48,19 @@ build_bar_graph <- function(dataframe = df, measurement, yearList){
               "median_budget" = median(budget, na.rm = TRUE),
               "total_budget" = sum(budget, na.rm = TRUE)
     )
-  
+
   bar_graph <- ggplot(data = dataframe) +
     geom_col(data = dataframe, aes_string(x = "year",
-                                          y = measurement), fill = "firebrick") +
+             y = measurement), fill = "firebrick") +
     xlab("Year") +
     ylab(paste0(y_title, " (USD)")) +
     ggtitle(paste0(y_title, " (USD) of Movie Industry by Year (1990 - 2020)")) +
-    geom_vline(xintercept = 1991, linetype="dotted", color = "white") + 
-    geom_vline(xintercept = 1997, linetype="dotted", color = "white") +  
-    geom_vline(xintercept = 2001, linetype="dotted", color = "white") +  
-    geom_vline(xintercept = 2005, linetype="dotted", color = "white") +  
-    geom_vline(xintercept = 2008, linetype="dotted", color = "white") +  
-    geom_vline(xintercept = 2020, linetype="dotted", color = "white") 
+    geom_vline(xintercept = 1991, linetype = "dotted", color = "white") +
+    geom_vline(xintercept = 1997, linetype = "dotted", color = "white") +
+    geom_vline(xintercept = 2001, linetype = "dotted", color = "white") +
+    geom_vline(xintercept = 2005, linetype = "dotted", color = "white") +
+    geom_vline(xintercept = 2008, linetype = "dotted", color = "white") +
+    geom_vline(xintercept = 2020, linetype = "dotted", color = "white")
 
-    
-  
   return(bar_graph)
 }

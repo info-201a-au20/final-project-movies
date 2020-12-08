@@ -11,7 +11,9 @@ summary_table <- function(dataframe) {
     mutate(
       usa_gross_income = as.numeric(
         str_remove_all(usa_gross_income, "\\$ ")),
-      budget = as.numeric(str_remove_all(budget, "\\$ "))
+      budget = suppressWarnings(
+        as.numeric(str_remove_all(budget, "\\$ "))
+      )
     )
 
   # Create a function to create frequency table for genres
@@ -50,3 +52,18 @@ summary_column_names <- c("Year",
                           "Most Common Genre",
                           "Least Common Genre"
 )
+
+# For shiny app:
+# Create a function outputting a table on genres
+build_genre_table <- function(dataframe) {
+  summary_table(dataframe) %>%
+    select(year, common_genre, least_genre)
+}
+
+# Create a function outputting a table on budget
+ build_budget_table <- function(dataframe) {
+   data <- summary_table(dataframe) %>%
+     select(year, avg_budget) %>%
+     filter(!is.na(avg_budget)) %>%
+     mutate(avg_budget = format(avg_budget, big.mark = ",", scientific = FALSE))
+ }

@@ -6,7 +6,7 @@ library(plotly)
 
 # Sidebar Panel
 sidebar_line <- sidebarPanel(
-  
+
   sliderInput(
     inputId = "slider",
     label = "Years",
@@ -32,12 +32,14 @@ main_line <- mainPanel(
   plotlyOutput("linegraph"),
   h2("About the Data:"),
   p("This data was sourced from the website googletrends.com. The points
-    represents the movie's google search interest relative to the highest 
+    represents the movie's google search interest relative to the highest
     point on the chart for the given time (one year after the movie was released
-    up until Nov 2020). A value of 100 is the peak popularity for the term. A 
+    up until Nov 2020). A value of 100 is the peak popularity for the term. A
     value of 50 means that the term is half as popular. A score of 0 means there
     was not enough data for this term."),
-  p("(The white dotted line represents March 2020)")
+  tags$footer(tags$p("Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth, Ha Nhat To: ",
+                     tags$a(id = "url", href= "https://github.com/info-201a-au20/final-project-movies", "Github URL"))
+  )
 )
 
 
@@ -47,5 +49,3 @@ line_page <- tabPanel(
   sidebar_line,
   main_line
 )
-
-

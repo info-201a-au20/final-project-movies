@@ -6,7 +6,45 @@ h2 {
   color: #B80201;
   text-align: left;
 }
+h3 {
+  color: #ec100c;
+}
 p {
   text-align: left;
 }
+
+.navbar {
+  background-color: #840404;
+}
+.navbar-default .navbar-brand{
+  color: white;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: white;
+  background-color: #B80201;
+}
     
+footer {
+  color: #840404;
+  text-align:left;
+}
+
+#url {
+  color: #FF6f17;
+  text-align: right;
+}
+  
+/* overview_page.R: Cropping image */
+#cropped_image {
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+  object-position: 20% 20%;
+}
+
+/* app_ui.R: Changing font type for the title */
+#change_title_font {
+  font-family: "New Century Schoolbook", Times, serif;
+  font-style: oblique;
+}

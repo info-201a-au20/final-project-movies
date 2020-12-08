@@ -10,6 +10,7 @@ source("app_ui.R")
 source("./scripts/Bargraph.R")
 source("./scripts/linegraph_GT.R")
 source("./scripts/Scatterplot.R")
+source("./scripts/summary_table_function.R")
 
 
 # Sourcing our dataframes
@@ -45,6 +46,25 @@ server <- function(input, output) {
     line <- build_line_graph(google_trend_df, input$slider,
                              input$quarantine_button)
     return(line)
+  })
+  
+  # Table
+  output$genre_table <- renderTable({
+    result <- (build_genre_table(df)) %>%
+      rename(
+        "Year" = "year",
+        "Most Common Genre" = "common_genre",
+        "Least Common Genre" = "least_genre"
+        )
+    })
+  
+  # Budget Graph
+  output$budget_table <- renderTable({
+    build_budget_table(df) %>%
+      rename(
+        "Year" = "year",
+        "Average Budget ($)" = "avg_budget"
+      )
   })
 
 }
