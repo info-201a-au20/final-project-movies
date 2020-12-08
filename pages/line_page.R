@@ -29,8 +29,10 @@ sidebar_line <- sidebarPanel(
 # Main Panel
 main_line <- mainPanel(
   plotlyOutput("linegraph"),
-  h2("About the Data:"),
-  p("This data was sourced from the website googletrends.com. The points
+  h2("About the Line Graph:"),
+  p("In this chart we are looking at the differences in search results of 
+    pandemic related movies around the start of US Quarantine (March 2020). 
+    This data was sourced from the website googletrends.com. The points
     represents the movie's google search interest relative to the highest
     point on the chart for the given time (one year after the movie was released
     up until Nov 2020). A value of 100 is the peak popularity for the term. A
