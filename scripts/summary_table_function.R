@@ -63,7 +63,11 @@ build_genre_table <- function(dataframe) {
 # Create a function outputting a table on budget
  build_budget_table <- function(dataframe) {
    data <- summary_table(dataframe) %>%
-     select(year, avg_budget) %>%
+     select(year, avg_budget, avg_income) %>%
      filter(!is.na(avg_budget)) %>%
-     mutate(avg_budget = format(avg_budget, big.mark = ",", scientific = FALSE))
+     mutate(avg_budget = format(avg_budget, big.mark = ",", scientific = FALSE)) %>%
+     mutate(avg_income = format(
+         avg_income, big.mark = ",", scientific = FALSE
+         )
+       )
  }
