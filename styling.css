@@ -6,7 +6,21 @@ h2 {
   color: #B80201;
   text-align: left;
 }
+h3 {
+  color: #ec100c;
+}
 p {
   text-align: left;
+}
+.navbar {
+  background-color: #840404;
+}
+.navbar-default .navbar-brand{
+  color: white;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: white;
+  background-color: #B80201;
 }
     
