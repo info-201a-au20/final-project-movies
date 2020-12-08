@@ -72,16 +72,10 @@ build_line_graph <- function(df, input_slider, input_button) {
     ) +
     # Add in a vertical line showcaseing the 2020 pandemic
     geom_vline(
-      mapping = aes(xintercept = as.yearmon("Mar 2020", "%b %Y"))
+      xintercept = as.yearmon("Mar 2020", "%b %Y"),
+      linetype = "dotted", 
+      color = "white"
     ) +
-    # Add the text next to the vertical line to say this is when the pandemic 
-    # was instated
-    geom_text(
-      mapping = aes(x = as.yearmon("Mar 2020", "%b %Y"),
-                    y = 0, 
-                    label = "US quarantine",
-                    color = "#a9a9a9"),
-      size=4, angle=90, vjust=-0.4, hjust=0) +
     # Add general title and x/y axis title 
     labs(
       title = "Search interest of Pandemic Related Movies",
