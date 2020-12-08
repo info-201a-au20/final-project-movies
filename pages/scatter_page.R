@@ -40,9 +40,11 @@ scatter_main_content <- mainPanel(
          can hover over each of the data points to see the year, average vote,
          and genre."),
 
-  tags$footer(tags$p("Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth, Ha Nhat To: ", 
-                   tags$a(id = "url", href= "https://github.com/info-201a-au20/final-project-movies", "Github URL"))
-  
+  tags$footer(tags$p("Gisele Fox, Emiri Nishizawa, Melina Perraut,
+                      Roshni Srikanth, Ha Nhat To: ",
+  tags$a(id = "url",
+  href = "https://github.com/info-201a-au20/final-project-movies",
+  "Github URL"))
   )
 )
 
