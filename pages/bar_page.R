@@ -57,7 +57,7 @@ bar_page <- tabPanel(
   fluidPage(
     includeCSS("styling.css"),
     titlePanel(
-      tags$h1("Financial Metrics of the Movie industry (1990 - 2020)")),
+      tags$h1("How Did Different Global Events Effect the Finances of the Movie Industy?")),
     sidebarLayout(
       bar_sidebar_panel,
       bar_main_panel
