@@ -42,7 +42,8 @@ summary_page <- tabPanel(
         "2020 - COVID-19 Pandemic",
         includeHTML("insight_2020.html")
       )
-      
-    )
+    ),
+  tags$footer(tags$p("Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth, Ha Nhat To"), 
+              tags$a(href= "https://github.com/info-201a-au20/final-project-movies"))
   )
 )

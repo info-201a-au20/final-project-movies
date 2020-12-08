@@ -12,6 +12,7 @@ h3 {
 p {
   text-align: left;
 }
+
 .navbar {
   background-color: #840404;
 }
@@ -24,3 +25,22 @@ p {
   background-color: #B80201;
 }
     
+footer {
+  color: #FF853E;
+  background: #840404;
+  text-align:left;
+}
+  
+/* overview_page.R: Cropping image */
+#cropped_image {
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+  object-position: 20% 20%;
+}
+
+/* app_ui.R: Changing font type for the title */
+#change_title_font {
+  font-family: "New Century Schoolbook", Times, serif;
+  font-style: oblique;
+}

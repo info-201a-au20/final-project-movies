@@ -43,10 +43,15 @@ bar_main_panel <- mainPanel(
   tags$p("One of the questions we wanted to answer 
   with our data was how different national and global events impacted the movie 
   industry. To answer this, this graph looks at the numbers for the money that is
-  brought in and spent by the movie industry by year. TO do this, the graph looks at
+  brought in and spent by the movie industry by year. To do this, the graph looks at
   three main values (average, median, and total) for either budget or revenue.
   The graph also has the option of specifiying a date range, to look at the impact 
-  of events of specific years on the movie industry."),
+  of events of specific years on the movie industry. The significant events that we
+  looked at were in 1991 (Introduction of the Internet), 1997 (Creation of Netflix) 
+  2001 (9/11), 2005 (Creation of Youtube), 2008 (Great Recession) and 2020 
+  (Coronavirus Pandemic)"),
+  tags$footer(tags$p("Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth, Ha Nhat To"), 
+              tags$a(href= "https://github.com/info-201a-au20/final-project-movies"))
 )
 
 bar_page <- tabPanel (

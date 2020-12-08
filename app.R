@@ -11,6 +11,5 @@ library("knitr")
 source("app_server.R")
 source("app_ui.R")
 
-
 # Load App
 shinyApp(ui = ui, server = server)
