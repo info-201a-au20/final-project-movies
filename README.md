@@ -42,3 +42,6 @@ This dataset contains information about 6280 movies from 1986 to 2016. It was ta
 
 **Google Trend Dataset**
 This dataset (availale in the data folder) contains search interest of 5 pandemic related movies relative to the highest point on the chart for their given time frame. Gisele sourced the data from [google trends](https://trends.google.com/trends) by specifying the time frame for each movie's chart to be one year after the movie was released up until now, then downloading the csv data for each movie. From there they cleaned the data and joined the individual data frames together to create one big data frame containing all the search popularities of each movie based on each month from Jan 2009 to Nov 2020. From this data frame we can learn about how pandemic related movie's popularities have changed during the covid pandemic.
+
+**Link To Final Project**
+[https://roshnisrikanth.shinyapps.io/The_Movie_Times_AG_1/]
