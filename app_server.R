@@ -34,12 +34,6 @@ server <- function(input, output) {
   })
 
   # Render a plotly object returning the line chart (interactive chart 3)
-  output$sliderexp <- renderText({
-    message <- paste("range is from", input$slider[1], "to", input$slider[2],
-                     "also", input$quarantine_button)
-    return(message)
-  })
-  # Line chart here
   output$linegraph <- renderPlotly({
     line <- build_line_graph(google_trend_df, input$slider,
                              input$quarantine_button)
