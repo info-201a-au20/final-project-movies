@@ -39,7 +39,7 @@ bar_sidebar_panel <- sidebarPanel(
 )
 
 bar_main_panel <- mainPanel(
-  plotlyOutput("bar"),
+  suppressWarnings(plotlyOutput("bar")),
   tags$h2("About Chart:"),
   tags$p("One of the questions we wanted to answer
   with our data was how different national and global events impacted the movie
@@ -59,10 +59,10 @@ bar_page <- tabPanel(
     includeCSS("styling.css"),
     titlePanel(
       tags$h1("How Did Different Global Events Effect the Finances of the Movie Industy?")),
-    sidebarLayout(
+    suppressWarnings(sidebarLayout(
       bar_sidebar_panel,
       bar_main_panel
-    ),
+    )),
     tags$footer(tags$p(
       "Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth,
     Ha Nhat To: ",

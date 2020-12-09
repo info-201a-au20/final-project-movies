@@ -34,12 +34,12 @@ build_bar_graph <- function(dataframe, measurement, year_list) {
   
   y_title <- str_to_title(str_replace_all(measurement, "_", " "))
 
-  new_dataframe <- dataframe %>%
+  new_dataframe <- suppressWarnings(dataframe %>%
     filter(year >= xmin, year <= xmax) %>%
     mutate("revenue" = as.numeric(
       str_sub(usa_gross_income, 2, nchar(usa_gross_income)))) %>%
-    mutate("budget" = suppressWarnings(as.numeric(
-      str_sub(budget, 2, nchar(budget))))) %>%
+    mutate("budget" = as.numeric(
+      str_sub(budget, 2, nchar(budget)))) %>%
     group_by(year) %>%
     summarise("average_revenue" = mean(revenue, na.rm = TRUE),
               "median_revenue" = median(revenue, na.rm = TRUE),
@@ -47,16 +47,17 @@ build_bar_graph <- function(dataframe, measurement, year_list) {
               "average_budget" = mean(budget, na.rm = TRUE),
               "median_budget" = median(budget, na.rm = TRUE),
               "total_budget" = sum(budget, na.rm = TRUE)
-    )
+    ))
   
-  bar_graph <- ggplotly(
+  bar_graph <- suppressWarnings(
+    ggplotly(
     ggplot(data = new_dataframe) +
     geom_col(data = new_dataframe, aes(x = year,
              y = !!ensym(measurement),
              text = paste0(y_title, ": $", round(!!ensym(measurement)), 2,
                            "<br> Year: ", year)), 
              fill = "firebrick") +
-    suppressWarnings(xlim(xmin - 1, xmax +1)) +
+    xlim(xmin - 1, xmax +1) +
     xlab("Year") +
     ylab(paste0(y_title, " (USD)")) +
     ggtitle(paste0(y_title, " (USD) of Movie Industry by Year (", xmin, " - ", xmax, ")")) +
@@ -66,10 +67,7 @@ build_bar_graph <- function(dataframe, measurement, year_list) {
     geom_vline(xintercept = 2005, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2008, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2020, linetype = "dotted", color = "white"),
-    tooltip = "text"
-    
-    
-      
+    tooltip = "text" )
 )
   return(bar_graph)
 }
