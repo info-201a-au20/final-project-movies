@@ -53,7 +53,8 @@ build_bar_graph <- function(dataframe, measurement, year_list) {
     ggplot(data = new_dataframe) +
     geom_col(data = new_dataframe, aes(x = year,
              y = !!ensym(measurement),
-             text = paste0(y_title, ": $", round(!!ensym(measurement)), 2)), 
+             text = paste0(y_title, ": $", round(!!ensym(measurement)), 2,
+                           "<br> Year: ", year)), 
              fill = "firebrick") +
     suppressWarnings(xlim(xmin - 1, xmax +1)) +
     xlab("Year") +
