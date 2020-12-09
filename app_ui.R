@@ -13,6 +13,7 @@ source("./pages/summary_page.R")
 # UI
 ui <- navbarPage(
   # theme
+  windowTitle = "The Movie Times",
   theme = shinytheme("united"),
   title = tags$p(id = "change_title_font", "The Movie Times"),
 
