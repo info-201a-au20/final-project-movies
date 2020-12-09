@@ -47,7 +47,7 @@ server <- function(input, output) {
                              input$quarantine_button)
     return(line)
   })
-  
+
   # Table
   output$genre_table <- renderTable({
     result <- (build_genre_table(df)) %>%
@@ -57,7 +57,7 @@ server <- function(input, output) {
         "Least Common Genre" = "least_genre"
         )
     })
-  
+
   # Budget Graph
   output$budget_table <- renderTable({
     build_budget_table(df) %>%

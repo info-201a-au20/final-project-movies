@@ -58,7 +58,10 @@ bar_page <- tabPanel(
   fluidPage(
     includeCSS("styling.css"),
     titlePanel(
-      tags$h1("How Did Different Global Events Effect the Finances of the Movie Industy?")),
+      tags$h1(
+        "How Did Different Global Events Effect the Finances of the Movie
+        Industy?")
+      ),
     suppressWarnings(sidebarLayout(
       bar_sidebar_panel,
       bar_main_panel
