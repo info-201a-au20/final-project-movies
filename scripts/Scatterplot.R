@@ -56,18 +56,20 @@ build_scatterplot <- function(dataframe, genre_input) {
     group_by(year)
 
   scatterplot <- ggplotly(
-    ggplot(data = data) +
-      geom_point(mapping = aes(
-        x = year,
-        y = genre_avg_vote,
-        color = genre,
-        text = paste0(
-          "Genre: ", genre,
-          "<br>Average vote: ",
-          round(genre_avg_vote, digits = 2),
-          "<br>Year: ", year
-        )
-      )) +
+    suppressWarnings(
+      ggplot(data = data) +
+        geom_point(mapping = aes(
+          x = year,
+          y = genre_avg_vote,
+          color = genre,
+          text = paste0(
+            "Genre: ", genre,
+            "<br>Average vote: ",
+            round(genre_avg_vote, digits = 2),
+            "<br>Year: ", year
+          )
+        )) 
+      ) +
       ggtitle(paste0(
         "Average Vote of ", genre_titles,
         " Genre(s) by Year (1990 - 2020)"

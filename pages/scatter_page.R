@@ -31,17 +31,15 @@ scatter_main_content <- mainPanel(
          different movie genres over the years, and the above scatterplot
          answers that question by showing the relationship between the average
          IMDB Metascore vote (out of 10) and movie genres in every year
-         from 1990 to 2020. The years of significant events we chose to focus on
-         are emphasized with dotted white lines on the plot.
+         from 1990 to 2020. 
          Since most movies in our dataset had multiple genres,
          the average vote for each movie was applied to each of the
-         movie's genres. Please note that the scatterplot is interactive, so you
-         can hover over each of the data points to see the year, average vote,
-         and genre.
+         movie's genres. 
          The significant events that we looked at were in 1991
          (Introduction of the Internet), 1997 (Creation of Netflix), 2001
          (9/11), 2005 (Creation of Youtube), 2008 (Great Recession), and 2020
-         (Coronavirus Pandemic).")
+         (Coronavirus Pandemic). The years of those significant events
+         are emphasized with dotted white lines on the plot.")
 )
 
 # Creating a `tabPanel()` for the scatterplot page
