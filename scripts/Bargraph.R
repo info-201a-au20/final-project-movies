@@ -31,9 +31,11 @@ build_bar_graph <- function(dataframe, measurement, year_list) {
   # make min and max x year values from slider
   xmin <- as.numeric(year_list[1])
   xmax <- as.numeric(year_list[2])
-  
+
+  # Create a better formatted version of the title
   y_title <- str_to_title(str_replace_all(measurement, "_", " "))
 
+  # Create a dataframe that only takes values from specific years
   new_dataframe <- suppressWarnings(dataframe %>%
     filter(year >= xmin, year <= xmax) %>%
     mutate("revenue" = as.numeric(
@@ -41,6 +43,7 @@ build_bar_graph <- function(dataframe, measurement, year_list) {
     mutate("budget" = as.numeric(
       str_sub(budget, 2, nchar(budget)))) %>%
     group_by(year) %>%
+    # The main metrics we will be measuring
     summarise("average_revenue" = mean(revenue, na.rm = TRUE),
               "median_revenue" = median(revenue, na.rm = TRUE),
               "total_revenue" = sum(revenue, na.rm = TRUE),
@@ -48,27 +51,33 @@ build_bar_graph <- function(dataframe, measurement, year_list) {
               "median_budget" = median(budget, na.rm = TRUE),
               "total_budget" = sum(budget, na.rm = TRUE)
     ))
-  
+
+  # Create the Bar Graph
+  # Suppress Warnings
   bar_graph <- suppressWarnings(
     ggplotly(
     ggplot(data = new_dataframe) +
     geom_col(data = new_dataframe, aes(x = year,
              y = !!ensym(measurement),
+             # This is the text for the tooltip
              text = paste0(y_title, ": $", round(!!ensym(measurement)), 2,
-                           "<br> Year: ", year)), 
+                           "<br> Year: ", year)),
              fill = "firebrick") +
-    xlim(xmin - 1, xmax +1) +
+    # Scale graph to only include years of interest
+    xlim(xmin - 1, xmax + 1) +
+    # Add labels and Title
     xlab("Year") +
     ylab(paste0(y_title, " (USD)")) +
-    ggtitle(paste0(y_title, " (USD) of Movie Industry by Year (", xmin, " - ", xmax, ")")) +
+    ggtitle(paste0(y_title, " (USD) of Movie Industry by Year
+                              (", xmin, " - ", xmax, ")")) +
+    # Add vertical lines to signify the years of interest
     geom_vline(xintercept = 1991, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 1997, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2001, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2005, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2008, linetype = "dotted", color = "white") +
     geom_vline(xintercept = 2020, linetype = "dotted", color = "white"),
-    tooltip = "text" )
+    tooltip = "text")
 )
   return(bar_graph)
 }
-

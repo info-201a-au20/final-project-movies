@@ -1,9 +1,12 @@
 # Summary Page
 summary_page <- tabPanel(
   title = "Insights and Summary",
+
   fluidPage(
     includeCSS("styling.css"),
     HTML("<h1>Insights</h1>"),
+    
+    # Genre insights overall
     includeHTML("insight_one.html"),
     bsCollapse(
       bsCollapsePanel(
@@ -11,11 +14,16 @@ summary_page <- tabPanel(
         tableOutput("genre_table")
       )
     ),
+
+    # Financial insights overall
     includeHTML("insight_two.html"),
     bsCollapsePanel(
       "Click to view average budget and revenue across years",
       tableOutput("budget_table")
   ),
+
+  # Insights of significant events
+  # Use collapse panels to organize information
     HTML("<h2>Significant Events Insights</h2>"),
     bsCollapse(
       bsCollapsePanel(

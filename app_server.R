@@ -34,21 +34,14 @@ server <- function(input, output) {
   })
 
   # Render a plotly object returning the line chart (interactive chart 3)
-
-  # Experiement
-  output$sliderexp <- renderText({
-    message <- paste("range is from", input$slider[1], "to", input$slider[2],
-                     "also", input$quarantine_button)
-    return(message)
-  })
-  # Line chart here
   output$linegraph <- renderPlotly({
     line <- build_line_graph(google_trend_df, input$slider,
                              input$quarantine_button)
     return(line)
   })
-  
-  # Table
+
+  # Create tables that will show on insights page
+  # Genre Table
   output$genre_table <- renderTable({
     result <- (build_genre_table(df)) %>%
       rename(
@@ -57,8 +50,8 @@ server <- function(input, output) {
         "Least Common Genre" = "least_genre"
         )
     })
-  
-  # Budget Graph
+
+  # Budget Table
   output$budget_table <- renderTable({
     build_budget_table(df) %>%
       rename(

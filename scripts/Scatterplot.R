@@ -68,7 +68,7 @@ build_scatterplot <- function(dataframe, genre_input) {
             round(genre_avg_vote, digits = 2),
             "<br>Year: ", year
           )
-        )) 
+        ))
       ) +
       ggtitle(paste0(
         "Average Vote of ", genre_titles,
