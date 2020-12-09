@@ -42,9 +42,16 @@ footer {
   height: 150px;
   width: 100%;
   object-fit: cover;
-  object-position: 20% 20%;
+  object-position: 50% 50%;
 }
 
+/* overview_page.R: Cropping footer image (the chairs) */
+#cropped_footer_image {
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% 80%;
+}
 /* app_ui.R: Changing font type for the title */
 #change_title_font {
   font-family: "New Century Schoolbook", Times, serif;
