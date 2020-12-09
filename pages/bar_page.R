@@ -28,7 +28,8 @@ year_slider <- sliderInput(
     max = 2020,
     value = c(1990, 2020),
     round = TRUE,
-    dragRange = TRUE
+    dragRange = TRUE,
+    sep = ""
   )
 
 bar_sidebar_panel <- sidebarPanel(

@@ -14,7 +14,8 @@ sidebar_line <- sidebarPanel(
     max = 2021,
     value = c(2010, 2021),
     round = TRUE,
-    dragRange = TRUE
+    dragRange = TRUE,
+    sep = ""
   ),
   radioButtons(
     inputId = "quarantine_button",
