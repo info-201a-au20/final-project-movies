@@ -20,15 +20,6 @@ intro_page <- tabPanel(
 
     tags$img(id = "cropped_footer_image",
              src = "movietheater.png", alt = "Image of Movie Theater"),
-
-<<<<<<< HEAD
-    tags$footer(tags$p(
-      "Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth, Ha Nhat To: ",
-      tags$a(id = "url",
-             href = "https://github.com/info-201a-au20/final-project-movies",
-             "Github URL"))
-    )
-=======
     tags$footer(
       tags$p("Gisele Fox, Emiri Nishizawa, Melina Perraut, Roshni Srikanth,
              Ha Nhat To: ",
@@ -38,6 +29,5 @@ intro_page <- tabPanel(
                "Github URL")
              )
       )
->>>>>>> c4e8c0871a9503e4ab16ea09480ae344d5878b2b
   )
 )
